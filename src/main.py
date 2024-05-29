@@ -21,7 +21,7 @@ app.add_middleware(
 def nl2code():
 
     print('hiii')
-    data = json.dumps({"reply": "hello"})
+    data = json.dumps({"reply": "hello 2"})
     return data
  
 if __name__ == "__main__":
