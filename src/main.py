@@ -17,17 +17,13 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-@app.post("/nl2code")
-def nl2code(body: NL2CodeBody):
-    # Get text_prompt from body and assign to variable text_prompt
-    text_prompt = body.text_prompt
-    user_id = body.user_id
+@app.post("/test")
+def nl2code():
 
-    # Create string for the print function
-    print_function = f"print(\"{text_prompt}\")"
-    data = json.dumps({"code": print_function})
+    print('hiii')
+    data = json.dumps({"reply": "hello"})
     return data
  
 if __name__ == "__main__":
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8002, reload=True)
