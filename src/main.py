@@ -40,8 +40,7 @@ os.chdir(current_dir)
 model_path = os.path.join(current_dir, 'command_models', 'saved_models', 'command_model.pt')
 
 command_model = command_models.UtteranceClassifier(model_path, 3072, 64, 3, client)
-prediction = command_model.predict("This is a test. 1 2 3")
-print(prediction)
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -99,107 +98,114 @@ async def process_text(request: TextRequest):
 
     user_prompt = request.prompt #"""show me car brands vs price, sort by decending prices"""
     conversational_context = request.context
-    
-    print("****Starting Reiteration****")
+    prediction = command_model.predict(user_prompt)
+    if (prediction == 0):
+      print("Explicit Command")
+    elif (prediction ==1):
+      print("Daily conversation")
+    elif (prediction == 2):
+      print("Implicit command")
+    return {}
+    # print("****Starting Reiteration****")
 
-    user_prompt_modified = llm_re.prompt_reiterate(user_prompt, conversational_context)
-    print(user_prompt_modified)       
-    print()
+    # user_prompt_modified = llm_re.prompt_reiterate(user_prompt, conversational_context)
+    # print(user_prompt_modified)       
+    # print()
     
-    print("****Starting Extracting Stations****")
-    stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
-    print(stations)
-    print(station_reasoning)
-    
-    
-    
-    print("****Starting for loop****")
-    print()
-    station_info = {}
-    headers = {"Authorization": "Bearer 71c5efcd8cfe303f2795e51f01d19c6"}
-    for idx,id in enumerate(stations):
-        if idx >= 3:
-            break
-        r = requests.get(f"https://api.hcdp.ikewai.org/mesonet/getVariables?station_id={id}", headers=headers)
-        variables = r.json()
-        available_variable_names = []
-        available_variable_ids = []
-        for var in variables:
-            available_variable_names.append(var['var_name'].replace(",",""))
-            available_variable_ids.append(var['var_id'])
-        available_variable_names.append("Date")
-        available_variable_ids.append('Date')
-        station_info[id] = {'available_variable_names': available_variable_names, 'available_variable_ids': available_variable_ids}
-    station_chart_info = {}
-    for id in station_info.keys():
-        print("****Starting Attribute Selection****")
-        print()
-        print('available variable names ****', station_info[id]['available_variable_names'])
-        chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, station_info[id]['available_variable_names'])
-        chosen_attribute_ids = []
-        for attr in chosen_attributes_names:
-            print(attr, "--------------------", available_variable_names)
-            # Check if the attribute exists in the available variables
-            if attr in available_variable_names:
-                index = station_info[id]['available_variable_names'].index(attr)
-                print(index)
-                # Check if index is valid
-                if index != -1:
-                    chosen_attribute_ids.append(station_info[id]['available_variable_ids'][index])
-                else:
-                    break
-            else:
-                break
-        print(chosen_attribute_ids)
-        print(attrib_reasoning)
-        print()
-        print("****Starting Transformation Selection****")
-        print()
-        transformations, trans_reasoning = llm_transform.prompt_transformations(user_prompt_modified, chosen_attributes_names)
-        print(trans_reasoning)
-        print("Transformations:", transformations)
-        print()
-        print("****Starting Chart Selection****")
-        print()
-        chartType, chart_frequencies, chart_reasoning, chart_scope = llm.prompt_charts_via_chart_info(user_prompt_modified, chosen_attributes_names)
-        print(chart_reasoning)
-        print(chartType)
-        print(chart_frequencies)
-        print(chart_scope)
-        station_chart_info[id] = {'attributes': chosen_attribute_ids, 'transformations': transformations, 'chartType': chartType, 'available_attribute_info': station_info[id]} #TODO check if values exist
-    # print("****Starting Extracting Date Ranges****")
-    # stations, station_reasoning = llm_transform.prompt_select_date_range(user_prompt_modified)
+    # print("****Starting Extracting Stations****")
+    # stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
     # print(stations)
-    print(station_reasoning)
-
-
-
-
-
-    # print(trans_reasoning)
-    # print(transformations)
-    end = time.time()
+    # print(station_reasoning)
     
-    print("Total time elapsed:", end-start)
     
-    # attributes.append("Date")
-    return {
-        'station_chart_info': station_chart_info,
-            # "attributes": {attribute: {"Data Type": column["Data Type"]} for attribute in attributes for column in csv_analysis if attribute == column["Column Name"]}, 
-            # "csv_uuid": csv_uuid_ext.split(".")[0], 
-            "debug": {
-                "context": conversational_context,
-                "query": user_prompt,
-                "reiteration": user_prompt_modified, 
-                "time": end-start,
-                # "attributes": attrib_reasoning, 
-                # "transformations": transformations,
-                # "charts": chart_reasoning,
-                # "charts_frequency": chart_frequencies,
-                # "charts_scope": chart_scope,
-                },
-            # "analysis": csv_analysis
-            }
+    
+    # print("****Starting for loop****")
+    # print()
+    # station_info = {}
+    # headers = {"Authorization": "Bearer 71c5efcd8cfe303f2795e51f01d19c6"}
+    # for idx,id in enumerate(stations):
+    #     if idx >= 3:
+    #         break
+    #     r = requests.get(f"https://api.hcdp.ikewai.org/mesonet/getVariables?station_id={id}", headers=headers)
+    #     variables = r.json()
+    #     available_variable_names = []
+    #     available_variable_ids = []
+    #     for var in variables:
+    #         available_variable_names.append(var['var_name'].replace(",",""))
+    #         available_variable_ids.append(var['var_id'])
+    #     available_variable_names.append("Date")
+    #     available_variable_ids.append('Date')
+    #     station_info[id] = {'available_variable_names': available_variable_names, 'available_variable_ids': available_variable_ids}
+    # station_chart_info = {}
+    # for id in station_info.keys():
+    #     print("****Starting Attribute Selection****")
+    #     print()
+    #     print('available variable names ****', station_info[id]['available_variable_names'])
+    #     chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, station_info[id]['available_variable_names'])
+    #     chosen_attribute_ids = []
+    #     for attr in chosen_attributes_names:
+    #         print(attr, "--------------------", available_variable_names)
+    #         # Check if the attribute exists in the available variables
+    #         if attr in available_variable_names:
+    #             index = station_info[id]['available_variable_names'].index(attr)
+    #             print(index)
+    #             # Check if index is valid
+    #             if index != -1:
+    #                 chosen_attribute_ids.append(station_info[id]['available_variable_ids'][index])
+    #             else:
+    #                 break
+    #         else:
+    #             break
+    #     print(chosen_attribute_ids)
+    #     print(attrib_reasoning)
+    #     print()
+    #     print("****Starting Transformation Selection****")
+    #     print()
+    #     transformations, trans_reasoning = llm_transform.prompt_transformations(user_prompt_modified, chosen_attributes_names)
+    #     print(trans_reasoning)
+    #     print("Transformations:", transformations)
+    #     print()
+    #     print("****Starting Chart Selection****")
+    #     print()
+    #     chartType, chart_frequencies, chart_reasoning, chart_scope = llm.prompt_charts_via_chart_info(user_prompt_modified, chosen_attributes_names)
+    #     print(chart_reasoning)
+    #     print(chartType)
+    #     print(chart_frequencies)
+    #     print(chart_scope)
+    #     station_chart_info[id] = {'attributes': chosen_attribute_ids, 'transformations': transformations, 'chartType': chartType, 'available_attribute_info': station_info[id]} #TODO check if values exist
+    # # print("****Starting Extracting Date Ranges****")
+    # # stations, station_reasoning = llm_transform.prompt_select_date_range(user_prompt_modified)
+    # # print(stations)
+    # print(station_reasoning)
+
+
+
+
+
+    # # print(trans_reasoning)
+    # # print(transformations)
+    # end = time.time()
+    
+    # print("Total time elapsed:", end-start)
+    
+    # # attributes.append("Date")
+    # return {
+    #     'station_chart_info': station_chart_info,
+    #         # "attributes": {attribute: {"Data Type": column["Data Type"]} for attribute in attributes for column in csv_analysis if attribute == column["Column Name"]}, 
+    #         # "csv_uuid": csv_uuid_ext.split(".")[0], 
+    #         "debug": {
+    #             "context": conversational_context,
+    #             "query": user_prompt,
+    #             "reiteration": user_prompt_modified, 
+    #             "time": end-start,
+    #             # "attributes": attrib_reasoning, 
+    #             # "transformations": transformations,
+    #             # "charts": chart_reasoning,
+    #             # "charts_frequency": chart_frequencies,
+    #             # "charts_scope": chart_scope,
+    #             },
+    #         # "analysis": csv_analysis
+    #         }
 
 
 @app.post("/transcribe")
