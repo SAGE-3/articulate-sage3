@@ -1,0 +1,148 @@
+,CarName,AveragePrice
+0,Nissan versa,5499.0
+1,alfa-romero Quadrifoglio,16500.0
+2,alfa-romero giulia,13495.0
+3,alfa-romero stelvio,16500.0
+4,audi 100 ls,13950.0
+5,audi 100ls,17580.0
+6,audi 4000,23875.0
+7,audi 5000,18920.0
+8,audi 5000s (diesel),17859.167
+9,audi fox,15250.0
+10,bmw 320i,16677.5
+11,bmw x1,20970.0
+12,bmw x3,28992.5
+13,bmw x4,30760.0
+14,bmw x5,41315.0
+15,bmw z4,24565.0
+16,buick century,28176.0
+17,buick century luxus (sw),28248.0
+18,buick century special,40960.0
+19,buick electra 225 custom,25552.0
+20,buick opel isuzu deluxe,34184.0
+21,buick regal sport coupe (turbo),45400.0
+22,buick skyhawk,31600.0
+23,buick skylark,35056.0
+24,chevrolet impala,5151.0
+25,chevrolet monte carlo,6295.0
+26,chevrolet vega 2300,6575.0
+27,dodge challenger se,6377.0
+28,dodge colt (sw),7609.0
+29,dodge colt hardtop,6692.0
+30,dodge coronet custom,8558.0
+31,dodge coronet custom (sw),12964.0
+32,dodge d200,7957.0
+33,dodge dart custom,8921.0
+34,dodge monaco (sw),6229.0
+35,dodge rampage,5572.0
+36,honda accord,9095.0
+37,honda accord cvcc,6529.0
+38,honda accord lx,7295.0
+39,honda civic,8274.333333333334
+40,honda civic (auto),10345.0
+41,honda civic 1300,9095.0
+42,honda civic 1500 gl,7295.0
+43,honda civic cvcc,6992.0
+44,honda prelude,8845.0
+45,isuzu D-Max ,9982.25
+46,isuzu D-Max V-Cross,8916.5
+47,isuzu MU-X,6785.0
+48,jaguar xf,35550.0
+49,jaguar xj,32250.0
+50,jaguar xk,36000.0
+51,maxda glc deluxe,6095.0
+52,maxda rx3,5195.0
+53,mazda 626,10345.0
+54,mazda glc,15062.5
+55,mazda glc 4,15645.0
+56,mazda glc custom,10595.0
+57,mazda glc custom l,8495.0
+58,mazda glc deluxe,9095.0
+59,mazda rx-4,8470.0
+60,mazda rx-7 gs,15994.5
+61,mazda rx2 coupe,6795.0
+62,mercury cougar,16503.0
+63,mitsubishi g4,10352.333333333334
+64,mitsubishi lancer,6189.0
+65,mitsubishi mirage,5389.0
+66,mitsubishi mirage g4,11242.333333333334
+67,mitsubishi montero,6989.0
+68,mitsubishi outlander,9525.666666666666
+69,mitsubishi pajero,8189.0
+70,nissan clipper,13324.0
+71,nissan dayz,13499.0
+72,nissan fuga,14399.0
+73,nissan gt-r,7099.0
+74,nissan juke,7799.0
+75,nissan kicks,19699.0
+76,nissan latio,7174.0
+77,nissan leaf,7299.0
+78,nissan note,7999.0
+79,nissan nv200,9549.0
+80,nissan otti,13499.0
+81,nissan rogue,7799.0
+82,nissan teana,17199.0
+83,nissan titan,7349.0
+84,peugeot 304,13200.0
+85,peugeot 504,15435.833333333334
+86,peugeot 504 (sw),12440.0
+87,peugeot 505s turbo diesel,17075.0
+88,peugeot 604sl,17525.0
+89,plymouth cricket,7957.0
+90,plymouth duster,12764.0
+91,plymouth fury gran sedan,7609.0
+92,plymouth fury iii,5900.5
+93,plymouth satellite custom (sw),6692.0
+94,plymouth valiant,8921.0
+95,porcshce panamera,32528.0
+96,porsche boxter,37028.0
+97,porsche cayenne,32714.25
+98,porsche macan,22018.0
+99,renault 12tl,9295.0
+100,renault 5 gtl,9895.0
+101,saab 99e,15235.0
+102,saab 99gle,16830.0
+103,saab 99le,13605.0
+104,subaru,6122.0
+105,subaru baja,9960.0
+106,subaru brz,7775.0
+107,subaru dl,8590.75
+108,subaru r1,9233.0
+109,subaru r2,11259.0
+110,subaru trezia,7463.0
+111,subaru tribeca,10198.0
+112,toyota carina,8778.0
+113,toyota celica gt,10698.0
+114,toyota celica gt liftback,9298.0
+115,toyota corolla,9530.0
+116,toyota corolla 1200,6843.0
+117,toyota corolla 1600 (sw),7898.0
+118,toyota corolla liftback,12308.0
+119,toyota corolla tercel,9538.0
+120,toyota corona,9366.333333333334
+121,toyota corona hardtop,6918.0
+122,toyota corona liftback,8449.0
+123,toyota corona mark ii,5348.0
+124,toyota cressida,17669.0
+125,toyota mark ii,9148.0
+126,toyota starlet,12839.5
+127,toyota tercel,11199.0
+128,toyouta tercel,15750.0
+129,vokswagen rabbit,7775.0
+130,volkswagen 1131 deluxe sedan,7975.0
+131,volkswagen 411 (sw),8495.0
+132,volkswagen dasher,11142.5
+133,volkswagen model 111,7995.0
+134,volkswagen rabbit,13295.0
+135,volkswagen rabbit custom,13845.0
+136,volkswagen super beetle,9495.0
+137,volkswagen type 3,8195.0
+138,volvo 144ea,16230.0
+139,volvo 145e (sw),14892.5
+140,volvo 244dl,18735.0
+141,volvo 245,16515.0
+142,volvo 246,22470.0
+143,volvo 264gl,20522.5
+144,volvo diesel,18950.0
+145,vw dasher,11595.0
+146,vw rabbit,9980.0

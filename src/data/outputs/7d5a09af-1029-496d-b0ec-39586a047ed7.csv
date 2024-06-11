@@ -1,0 +1,148 @@
+,CarName,TotalWorth
+0,peugeot 504,92615.0
+1,porsche cayenne,65428.5
+2,bmw x3,57985.0
+3,toyota corolla,57180.0
+4,toyota corona,56198.0
+5,buick regal sport coupe (turbo),45400.0
+6,bmw x5,41315.0
+7,volvo 264gl,41045.0
+8,buick century special,40960.0
+9,volvo 244dl,37470.0
+10,porsche boxter,37028.0
+11,jaguar xk,36000.0
+12,jaguar xf,35550.0
+13,audi 100ls,35160.0
+14,buick skylark,35056.0
+15,peugeot 604sl,35050.0
+16,subaru dl,34363.0
+17,buick opel isuzu deluxe,34184.0
+18,mitsubishi mirage g4,33727.0
+19,saab 99gle,33660.0
+20,bmw 320i,33355.0
+21,porcshce panamera,32528.0
+22,volvo 144ea,32460.0
+23,jaguar xj,32250.0
+24,mazda rx-7 gs,31989.0
+25,buick skyhawk,31600.0
+26,mitsubishi g4,31057.0
+27,mazda 626,31035.0
+28,bmw x4,30760.0
+29,saab 99e,30470.0
+30,mazda glc,30125.0
+31,volvo 145e (sw),29785.0
+32,mitsubishi outlander,28577.0
+33,buick century luxus (sw),28248.0
+34,buick century,28176.0
+35,toyota mark ii,27444.0
+36,saab 99le,27210.0
+37,nissan clipper,26648.0
+38,toyota starlet,25679.0
+39,buick electra 225 custom,25552.0
+40,honda civic,24823.0
+41,toyota corolla liftback,24616.0
+42,bmw z4,24565.0
+43,audi 4000,23875.0
+44,volvo 246,22470.0
+45,volkswagen dasher,22285.0
+46,porsche macan,22018.0
+47,bmw x1,20970.0
+48,isuzu D-Max ,19964.5
+49,nissan kicks,19699.0
+50,volvo diesel,18950.0
+51,audi 5000,18920.0
+52,mazda glc deluxe,18190.0
+53,honda accord,18190.0
+54,audi 5000s (diesel),17859.167
+55,toyota cressida,17669.0
+56,nissan teana,17199.0
+57,peugeot 505s turbo diesel,17075.0
+58,mazda rx-4,16940.0
+59,volvo 245,16515.0
+60,mercury cougar,16503.0
+61,alfa-romero stelvio,16500.0
+62,alfa-romero Quadrifoglio,16500.0
+63,toyouta tercel,15750.0
+64,mazda glc 4,15645.0
+65,nissan rogue,15598.0
+66,audi fox,15250.0
+67,nissan fuga,14399.0
+68,nissan latio,14348.0
+69,honda civic cvcc,13984.0
+70,audi 100 ls,13950.0
+71,volkswagen rabbit custom,13845.0
+72,toyota corolla 1200,13686.0
+73,nissan otti,13499.0
+74,nissan dayz,13499.0
+75,alfa-romero giulia,13495.0
+76,volkswagen rabbit,13295.0
+77,peugeot 304,13200.0
+78,dodge coronet custom (sw),12964.0
+79,plymouth duster,12764.0
+80,peugeot 504 (sw),12440.0
+81,subaru,12244.0
+82,plymouth fury iii,11801.0
+83,vw dasher,11595.0
+84,subaru r2,11259.0
+85,toyota tercel,11199.0
+86,toyota celica gt,10698.0
+87,mazda glc custom,10595.0
+88,honda civic (auto),10345.0
+89,subaru tribeca,10198.0
+90,vw rabbit,9980.0
+91,subaru baja,9960.0
+92,renault 5 gtl,9895.0
+93,nissan nv200,9549.0
+94,toyota corolla tercel,9538.0
+95,volkswagen super beetle,9495.0
+96,toyota celica gt liftback,9298.0
+97,renault 12tl,9295.0
+98,subaru r1,9233.0
+99,honda civic 1300,9095.0
+100,plymouth valiant,8921.0
+101,dodge dart custom,8921.0
+102,isuzu D-Max V-Cross,8916.5
+103,honda prelude,8845.0
+104,toyota carina,8778.0
+105,dodge coronet custom,8558.0
+106,volkswagen 411 (sw),8495.0
+107,mazda glc custom l,8495.0
+108,toyota corona liftback,8449.0
+109,volkswagen type 3,8195.0
+110,mitsubishi pajero,8189.0
+111,nissan note,7999.0
+112,volkswagen model 111,7995.0
+113,volkswagen 1131 deluxe sedan,7975.0
+114,plymouth cricket,7957.0
+115,dodge d200,7957.0
+116,toyota corolla 1600 (sw),7898.0
+117,nissan juke,7799.0
+118,vokswagen rabbit,7775.0
+119,subaru brz,7775.0
+120,plymouth fury gran sedan,7609.0
+121,dodge colt (sw),7609.0
+122,subaru trezia,7463.0
+123,nissan titan,7349.0
+124,nissan leaf,7299.0
+125,honda civic 1500 gl,7295.0
+126,honda accord lx,7295.0
+127,nissan gt-r,7099.0
+128,mitsubishi montero,6989.0
+129,toyota corona hardtop,6918.0
+130,mazda rx2 coupe,6795.0
+131,isuzu MU-X,6785.0
+132,plymouth satellite custom (sw),6692.0
+133,dodge colt hardtop,6692.0
+134,chevrolet vega 2300,6575.0
+135,honda accord cvcc,6529.0
+136,dodge challenger se,6377.0
+137,chevrolet monte carlo,6295.0
+138,dodge monaco (sw),6229.0
+139,mitsubishi lancer,6189.0
+140,maxda glc deluxe,6095.0
+141,dodge rampage,5572.0
+142,Nissan versa,5499.0
+143,mitsubishi mirage,5389.0
+144,toyota corona mark ii,5348.0
+145,maxda rx3,5195.0
+146,chevrolet impala,5151.0
