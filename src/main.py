@@ -17,6 +17,7 @@ from groq import Groq
 import csv_llm
 import openai
 import requests
+import command_models
 
 class TextRequest(BaseModel):
     prompt: str
@@ -29,11 +30,18 @@ class NL2CodeBody(BaseModel):
 whisper_model = whisper.load_model("base.en")
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
+
 client = openai.OpenAI(
     base_url = os.environ["OPENAI_API_BASE"], # "http://<Your api-server IP>:port"
     api_key  = os.environ["OPENAI_API_KEY"]
 )
+current_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(current_dir)
+model_path = os.path.join(current_dir, 'command_models', 'saved_models', 'command_model.pt')
 
+command_model = command_models.UtteranceClassifier(model_path, 3072, 64, 3, client)
+prediction = command_model.predict("This is a test. 1 2 3")
+print(prediction)
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
