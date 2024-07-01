@@ -5,102 +5,101 @@ chart_decision_tree = {
     "Column Histogram": "Distribution -> One Variable -> Few Data Points -> Column Histogram",
     "Line Histogram": "Distribution -> One Variable -> Many Data Points -> Line Histogram",
     "Scatter Chart": "Distribution -> Two Variables -> Scatter Chart",
-    "3D Area Chart": "Distribution -> Three Variables -> 3D Area Chart",
-    "Scatter Chart": "Relationship -> Two Variable -> Scatter Chart",
-    "Bubble Chart": "Relationship -> Three Variable -> Bubble Chart",
+    # "3D Area Chart": "Distribution -> Three Variables -> 3D Area Chart",
+    # "Bubble Chart": "Relationship -> Three Variable -> Bubble Chart",
     # "Bubble Chart 4": "Relationship -> Three Variable -> Bubble Chart",
-    "Variable Width Column Chart": "Comparison -> Among Items -> Two Variables Per Item -> Variable Width Column Chart",
-    "Bar Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Many Items -> Bar Chart",
-    "Column Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Few Items -> Column Chart",
-    "Circular Area Chart": "Comparison -> Over Time -> Many Periods -> Cyclical Data -> Circular Area Chart",
-    "Column Chart": "Comparison -> Over Time -> Few Periods -> Single or Few Categories -> Column Chart",
+    # "Variable Width Column Chart": "Comparison -> Among Items -> Two Variables Per Item -> Variable Width Column Chart",
+    # "Bar Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Many Items -> Bar Chart",
+    # "Column Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Few Items -> Column Chart",
+    # "Circular Area Chart": "Comparison -> Over Time -> Many Periods -> Cyclical Data -> Circular Area Chart",
+    # "Column Chart": "Comparison -> Over Time -> Few Periods -> Single or Few Categories -> Column Chart",
     "Line Chart": "Comparison -> Over Time -> Few Periods -> Many Categories -> Line Chart",
     # "Stacked 100% Column Chart": "Composition -> Changing Over Time -> Few Periods -> Only Relative Differences Matter -> Stacked 100% Column Chart",
     # "Stacked Column Chart": "Composition -> Changing Over Time -> Few Periods -> Relative and Absolute Differences Matter -> Stacked Column Chart",
     # "Stacked 100% Area Chart": "Composition -> Changing Over Time -> Many Periods -> Only Relative Differences Matter -> Stacked 100% Area Chart",
     # "Stacked Area Chart": "Composition -> Changing Over Time -> Many Periods-> Relative and Absolute Differences Matter -> Stacked Area Chart",
     "Pie Chart": "Composition -> Static -> Sample Share of Total -> Pie Chart",
-    "Waterfall Chart": "Composition -> Static -> Accumulation or Subtraction to Total -> Waterfall Chart",
+    # "Waterfall Chart": "Composition -> Static -> Accumulation or Subtraction to Total -> Waterfall Chart",
     # "Stacked 100% Column Chart with SubComponents": "Composition -> Static -> Components of Components -> Stacked 100% Column Chart with SubComponents",
 }
 
 chart_info = {
-  "Variable Width Column Chart": {
-    "description": "two variables per item",
-    "attribute_counts": {"categorical": 1, "numerical": 2},
-    "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used as column label",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Y-axis/series",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on X-axis",
-      },
-    ],
-    "example":
-      "Budgeting: expense type (categorical), amount spent (numerical), percentage of amount spend based on total budget (numerical)",
-  },
-  "Bar Chart": {
-    "description": "many items",
-    "attribute_counts": {"categorical": 1, "numerical": 1},
-    "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used on Y-axis",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on X-axis/series",
-      },
-    ],
-    "example":
-      "GPU performance comparison: GPU model (categorical), performance (numerical)",
-  },
-  "Column Chart": {
-    "description": "few items/single or few categories",
-    "attribute_counts": {"categorical": 2, "numerical": 1},
-    "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used on X-axis",
-      },
-      {
-        "type": "categorical",
-        "notes": "Used on column label",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Y-axis/series",
-      },
-    ],
-    "example":
-      "Comparing product sales by year: products (categorical), sales (numerical), year (categorical)",
-  },
-  "Circular Area Chart": {
-    "description": "cyclical data",
-    "attribute_counts": {"categorical": 2, "numerical": 1},
-    "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used on indicator (arranges data in a circle)",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used in series",
-      },
-      {
-        "type": "categorical",
-        "notes": "Used in series",
-      },
-    ],
-    "example":
-      "Temperatures in a year in different cities: months (categorical), temperature (numerical), city (categorical)",
-  },
+  # "Variable Width Column Chart": {
+  #   "description": "two variables per item",
+  #   "attribute_counts": {"categorical": 1, "numerical": 2},
+  #   "attributes": [
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used as column label",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Y-axis/series",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on X-axis",
+  #     },
+  #   ],
+  #   "example":
+  #     "Budgeting: expense type (categorical), amount spent (numerical), percentage of amount spend based on total budget (numerical)",
+  # },
+  # "Bar Chart": {
+  #   "description": "many items",
+  #   "attribute_counts": {"categorical": 1, "numerical": 1},
+  #   "attributes": [
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used on Y-axis",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on X-axis/series",
+  #     },
+  #   ],
+  #   "example":
+  #     "GPU performance comparison: GPU model (categorical), performance (numerical)",
+  # },
+  # "Column Chart": {
+  #   "description": "few items/single or few categories",
+  #   "attribute_counts": {"categorical": 2, "numerical": 1},
+  #   "attributes": [
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used on X-axis",
+  #     },
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used on column label",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Y-axis/series",
+  #     },
+  #   ],
+  #   "example":
+  #     "Comparing product sales by year: products (categorical), sales (numerical), year (categorical)",
+  # },
+  # "Circular Area Chart": {
+  #   "description": "cyclical data",
+  #   "attribute_counts": {"categorical": 2, "numerical": 1},
+  #   "attributes": [
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used on indicator (arranges data in a circle)",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used in series",
+  #     },
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used in series",
+  #     },
+  #   ],
+  #   "example":
+  #     "Temperatures in a year in different cities: months (categorical), temperature (numerical), city (categorical)",
+  # },
   "Line Chart": {
     "description": "non-cyclical data/many categories",
     "attribute_counts": {"categorical": 1, "numerical": 1},
@@ -169,46 +168,46 @@ chart_info = {
     ],
     "example": "Weight and height: weight (numerical), height (numerical)",
   },
-  "3D Area Chart": {
-    "description": "three variables",
-    "attribute_counts": {"categorical": 0, "numerical": 3},
-    "attributes": [
-      {
-        "type": "numerical",
-        "notes": "Used on X-axis",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Y-axis",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Z-axis",
-      },
-    ],
-    "example":
-      "Latitude, Longitude, Earthquake Intensity: latitude (numerical), longitude (numerical), intensity (numerical)",
-  },
+  # "3D Area Chart": {
+  #   "description": "three variables",
+  #   "attribute_counts": {"categorical": 0, "numerical": 3},
+  #   "attributes": [
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on X-axis",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Y-axis",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Z-axis",
+  #     },
+  #   ],
+  #   "example":
+  #     "Latitude, Longitude, Earthquake Intensity: latitude (numerical), longitude (numerical), intensity (numerical)",
+  # },
   # "Stacked 100% Column Chart with Subcomponents": {
   #   "description": "component of components",
     
   # },
-  "Waterfall Chart": {
-    "description": "accumulation or subtraction to total",
-    "attribute_counts": {"categorical": 1, "numerical": 1},
-    "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used on column label",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Y-axis",
-      },
-    ],
-    "example":
-      "Inventory audit of t-shirts showing numbers damaged and refurbished: t-shirt status such as damaged or refurbished (categorical), number of t-shirts (numerical)",
-  },
+  # "Waterfall Chart": {
+  #   "description": "accumulation or subtraction to total",
+  #   "attribute_counts": {"categorical": 1, "numerical": 1},
+  #   "attributes": [
+  #     {
+  #       "type": "categorical",
+  #       "notes": "Used on column label",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Y-axis",
+  #     },
+  #   ],
+  #   "example":
+  #     "Inventory audit of t-shirts showing numbers damaged and refurbished: t-shirt status such as damaged or refurbished (categorical), number of t-shirts (numerical)",
+  # },
   "Pie Chart": {
     "description": "simple share of total",
     "attribute_counts": {"categorical": 1, "numerical": 1},
@@ -292,26 +291,26 @@ chart_info = {
   #   "example":
   #     "Occupations in the US: occupation (categorical), percentage of total (numerical)",
   # },
-  "Bubble Chart": {
-    "description": "three variables",
-    "attribute_counts": {"categorical": 0, "numerical": 3},
-    "attributes": [
-      {
-        "type": "numerical",
-        "notes": "Used on X-axis",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on Y-axis/series",
-      },
-      {
-        "type": "numerical",
-        "notes": "Used on bubble size",
-      },
-    ],
-    "example":
-      "Relationship between rent, income, population for different cities: rent (numerical), income (numerical), population (numerical)",
-  },
+  # "Bubble Chart": {
+  #   "description": "three variables",
+  #   "attribute_counts": {"categorical": 0, "numerical": 3},
+  #   "attributes": [
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on X-axis",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on Y-axis/series",
+  #     },
+  #     {
+  #       "type": "numerical",
+  #       "notes": "Used on bubble size",
+  #     },
+  #   ],
+  #   "example":
+  #     "Relationship between rent, income, population for different cities: rent (numerical), income (numerical), population (numerical)",
+  # },
   # "Bubble Chart 4": {
   #   "description": "four variables",
   #   "attribute_counts": {"categorical": 0, "numerical": 4},

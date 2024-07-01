@@ -3,7 +3,6 @@ uvicorn
 pydantic
 uuid
 whisper
-webrtcvad
 pydub
 groq
 openai

@@ -24,7 +24,7 @@ class LLM:
             # print(json.dumps(self.samples, indent=2))
 
         if context_path:
-            self.csv_context = Utils.calculate_metrics(context_path)
+            # self.csv_context = Utils.calculate_metrics(context_path)
             self.csv_headers = list(Utils.get_headers(context_path))
             # print(self.csv_headers)
             # print(json.dumps(self.csv_context, indent=2))
@@ -104,6 +104,20 @@ class LLM:
 
 
     # Filters
+    
+    def __results_filter_dates__(self, output):
+        # Find text within the double curly braces
+        matches = re.findall(r'\{.*?\}', output)
+        if matches:
+            try:
+                # Get the content of the last match, assuming that is the intended result
+                result = matches[-1]
+                # Convert the string to a dictionary
+                result_dict = json.loads(result)
+                return result_dict
+            except Exception as e:
+                print(e, "Error occurred in results_filter_dates")
+        return None
 
     def __results_filter__(self, output):
         # Find all text between the outermost brackets
@@ -295,7 +309,6 @@ Provide your answer at the end in this format ["Answer 1"]
 
 
     def prompt_attributes(self, user_prompt, attributes):
-        assert self.csv_headers, "Context Required"
 
         system = """# Task
 Given user prompt extract all plausible attributes.  Attributes are more than likely associated with the column names on tabular data.  
@@ -321,6 +334,7 @@ filter -> ["Air temperature_ sensor 1" > 22]
 filter -> ["Soil moisture_ sensor 1" > 22, "Soil moisture_ sensor 1" < 30]
 filter -> ["Station_name" == "Nuuanu Res", "Soil moisture_ sensor 1" != 30]
 Now, take a moment to put yourself in the shoes of the user. Consider their intent behind the query and deduce the necessary transformation(s) to achieve their goal. After careful consideration, provide your answer in the format of ["Answer 1","Answer 2",...]..
+You do not need to filter the data by date. 
 
 Example:
 User Query: "Show me the stations that have air temperature greater than 75"
@@ -329,7 +343,8 @@ User Intent Analysis:
 The user wants to filter the dataset to display only those rows where the air temperature exceeds 75 degrees for the month of February.
 
 Transformation Deduction:
-["Air temperature_ sensor 1" > 75, "Date" > 2024-01-31T00:15:00Z, "Date" < 2024-03-01T00:15:00Z, ]
+["Air temperature, sensor 1" > 75]
+Note: Do not filter the data by date
 
 For extra context, todays date is {datetime.datetime.now()}
 """
@@ -339,6 +354,7 @@ For extra context, todays date is {datetime.datetime.now()}
 
 
     def prompt_reiterate(self, user_prompt, conversational_context):
+        print(user_prompt, conversational_context)
         #You are a data scientist and a data visualization expert.
         system = """You are a data scientist and a data visualization expert.
 # Task
@@ -364,75 +380,47 @@ Take a deep breath, think it through, assume you are the user and imagine their 
     #        Station 0605, PowerlineTrail is located on latitude: 22.113562 and longitude -159.438786
 
     def prompt_select_stations(self, user_prompt):
-        system = """ You are an expert Hawaii database manager. You are tasked to select station IDs that fit the user's criteria.
+        system = """ You are an expert Oahu database manager. You are tasked to select station IDs that fit the user's criteria.
+        These stations will be used to answer the user's query on Oahu's climate.
         
         Here are a list of stations:
-        Station 0244, Kealakekua is located on latitude: 19.505859 and longitude -155.762429
-        Station 0541, KaaawaMakai is located on latitude: 21.540352 and longitude -157.845041
-        Station 0155, EMIBaseYard is located on latitude: 20.890997 and longitude -156.212316
-        Station 0204, Pahoa is located on latitude: 19.501169 and longitude -154.943731
-        Station 0621, LawaiNTGB is located on latitude: 21.905295 and longitude -159.510395
-        Station 0604, UpperLimahuli is located on latitude: 22.18454 and longitude -159.582659
-        Station 0603, LowerLimahuli is located on latitude: 22.219805 and longitude -159.575195
-        Station 0602, CommonGround is located on latitude: 22.197439 and longitude -159.42123
-        Station 0601, Waipa is located on latitude: 22.202647 and longitude -159.518833
-        Station 0521, Kaala is located on latitude: 21.50675 and longitude -158.144861
-        Station 0520, KaalaRepeater is located on latitude: 21.508229 and longitude -158.144075
-        Station 0506, Kalawahine is located on latitude: 21.34522 and longitude -157.80556
-        Station 0505, Napuumaia is located on latitude: 21.35489 and longitude -157.83063
-        Station 0504, Waiolani is located on latitude: 21.33756 and longitude -157.84092
-        Station 0503, UpperWaiolani is located on latitude: 21.34666 and longitude -157.83641
-        Station 0502, NuuanuRes1 is located on latitude: 21.339124 and longitude -157.836859
-        Station 0501, Lyon is located on latitude: 21.333 and longitude -157.8025
-        Station 0431, Anapuka is located on latitude: 21.215984 and longitude -157.241786
-        Station 0412, Honolimaloo is located on latitude: 21.131411 and longitude -156.758626
-        Station 0411, Keopukaloa is located on latitude: 21.145283 and longitude -156.729459
-        Station 0288, PuuWaawaa is located on latitude: 19.725393 and longitude -155.873917
-        Station 0287, Mamalahoa is located on latitude: 19.80258 and longitude -155.850629
-        Station 0286, Palamanui is located on latitude: 19.73756 and longitude -155.99582
-        Station 0283, Laupahoehoe is located on latitude: 19.93217 and longitude -155.29129
-        Station 0282, Spencer is located on latitude: 19.96358 and longitude -155.25014
-        Station 0281, IPIF is located on latitude: 19.69748 and longitude -155.0954
-        Station 0252, Lalamilo is located on latitude: 20.019528 and longitude -155.677085
-        Station 0251, Kehena is located on latitude: 20.122834 and longitude -155.749329
-        Station 0243, KonaHema is located on latitude: 19.2068247 and longitude -155.8109802
-        Station 0242, KaiauluPuuWaawaa is located on latitude: 19.77241 and longitude -155.83118
-        Station 0241, Keahuolu is located on latitude: 19.668669 and longitude -155.957474
-        Station 0231, Kaiholena is located on latitude: 19.16877 and longitude -155.57035
-        Station 0213, Piihonua is located on latitude: 19.7064059 and longitude -155.1873737
-        Station 0212, Kulaimano is located on latitude: 19.834341 and longitude -155.122435
-        Station 0211, Kanakaleonui is located on latitude: 19.845036 and longitude -155.362586
-        Station 0203, Olaa is located on latitude: 19.478399 and longitude -155.214969
-        Station 0202, Keaau is located on latitude: 19.6061748 and longitude -155.0515231
-        Station 0201, Nahuku is located on latitude: 19.415215 and longitude -155.238394
-        Station 0165, Hamoa is located on latitude: 20.719497 and longitude -156.002356
-        Station 0164, BigBog is located on latitude: 20.726514 and longitude -156.092308
-        Station 0162, Treeline is located on latitude: 20.734315 and longitude -156.123354
-        Station 0161, PohakuPalaha is located on latitude: 20.730574 and longitude -156.141316
-        Station 0154, Waikamoi is located on latitude: 20.773636 and longitude -156.222311
-        Station 0153, Summit is located on latitude: 20.710361 and longitude -156.25675
-        Station 0152, NeneNest is located on latitude: 20.738194 and longitude -156.245833
-        Station 0151, ParkHQ is located on latitude: 20.759806 and longitude -156.248167
-        Station 0145, UpperKahikinui is located on latitude: 20.644215 and longitude -156.284703
-        Station 0144, Kahikinui is located on latitude: 20.633945 and longitude -156.273889
-        Station 0143, Nakula is located on latitude: 20.674726 and longitude -156.233409
-        Station 0141, Auwahi is located on latitude: 20.644222 and longitude -156.342056
-        Station 0131, LahainaWTP is located on latitude: 20.89072 and longitude -156.65493
-        Station 0121, Lipoa is located on latitude: 20.7458333 and longitude -156.4305556
-        Station 0119, KulaAg is located on latitude: 20.757889 and longitude -156.320028
-        Station 0118, Pulehu is located on latitude: 20.79532 and longitude -156.35991
-        Station 0116, Keokea is located on latitude: 20.7067 and longitude -156.3554
-        Station 0115, Piiholo is located on latitude: 20.8415 and longitude -156.2948
-
-        Only pick 3 stations at most.
+        Station 0521, Kaala (Station 1) is located on latitude: 21.50675 and longitude -158.144861
+        Station 0502, NuuanuRes1 (Station 2) is located on latitude: 21.339124 and longitude -157.836859    
+        Station 0501, Lyon (Station 3) is located on latitude: 21.333 and longitude -157.8025
+        
+        If the user does not explicitly say which stations to choose from, you may select all of the stations
+        (EX: ["0502", "0501", "0521"])
 
         Take a deep breath. Think it through. Imagine you are the user and imagine their intent. 
         Provide your answer only in the format ["Answer 1", "Answer 2", ...]
-        Only give me the station id numbers. For example ["0541", "0431", ...]
+        Only give me the station id numbers. For example ["0502", "0521", ...]
         """
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
             messages=self.__message_builder__(system, user_prompt),  filter_method=self.__results_filter__)
         
+    def prompt_select_dates(self, user_prompt):
+        system = """ You are a date expert selector.
+        You will be given a query from a user and you will select the appropriate dates to filter the data by. 
+        For context, today is 2024-04-01T00:00:00.000000Z.
+        The dataset only has data since 2023-04-01T00:00:00.000000Z, so picking dates past this will not work.
+        
+        Here are some examples of what a user might say and how you will respond. 
+        
+        Query: Can you show me rainfall for the prior week?
+        Answer: {"startDate": "2024-03-25T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        
+        Query: what is the temperature for January?
+        Answer: {"startDate": "2024-01-01T00:00:00.000000Z", "endDate": "2024-02-01T00:00:00.000000Z"}
+        
+        Query: Does rainfall and soil temperature have a correlation?
+        Answer: {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        
+        If the user does not explicitly say which stations to choose from, you may select all of the stations
+        (EX: ["0502", "0501", "0521"])
 
-
-
+        Take a deep breath. Think it through. Imagine you are the user and imagine their intent. 
+        You are only strictly to answer in the format {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        If you are unsure, just pick the entire dataset. EX: {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        """
+        return self.__base_prompt_with_self_reflection__(user_prompt, system,
+            messages=self.__message_builder__(system, user_prompt), filter_method=self.__results_filter_dates__)
