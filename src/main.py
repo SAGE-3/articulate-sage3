@@ -20,6 +20,27 @@ import requests
 import command_models
 from collections import deque
 
+filename = "./logs/test.json"
+
+# Check if the file exists, if not create it with an empty array
+if not os.path.exists(filename):
+    with open(filename, 'w') as file:
+        json.dump([], file)
+
+def write_to_file(data):
+    # Read the existing content
+    with open(filename, 'r') as file:
+        array = json.load(file)
+    
+    # Add new data to the array
+    array.append(data)
+    
+    # Write the updated array back to the file
+    with open(filename, 'w') as file:
+        json.dump(array, file, indent=4)
+        
+    return
+
 
 class TextRequest(BaseModel):
     prompt: str
@@ -110,8 +131,9 @@ async def createChartOptions(request: TextRequest):
   llm = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 1, "dataset": dataset})
   conversational_context = request.context
   user_prompt = request.prompt #"""show me car brands vs price, sort by decending prices"""
-  user_prompt_modified = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
+  user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
                                                  Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
+
   print("****Generating Chart****")
 
   stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
@@ -160,6 +182,22 @@ async def createChartOptions(request: TextRequest):
   
   print("Total time elapsed:", end-start)
   
+  write_to_file(json.dumps({
+    "userPrompt": user_prompt,
+    "chartContext": chart_context,
+    "conversationalContext": conversational_context,
+    "userPromptModified": user_prompt_modified,
+    "userPromptReasoning": user_prompt_reasoning,
+    "stationChosen": stations, 
+    "stationReasoning": station_reasoning,
+    "dates": dates,
+    "datesReasoning": dates_reasoning,
+    "attributes": chosen_attributes_names,
+    "attributeReasoning": attrib_reasoning,
+    "transformations": transformations,
+    "transformationReasoning": trans_reasoning
+    }))
+  
   return {
       'station_chart_info': station_chart_info,
           "debug": {
@@ -207,13 +245,13 @@ def read_wave(path):
         pcm_data = wf.readframes(wf.getnframes())
         return pcm_data, sample_rate
 
-def has_voice_activity(wav_file_path):
-    vad = webrtcvad.Vad(3)
-    audio, sample_rate = read_wave(wav_file_path)
-    frames = frame_generator(30, audio, sample_rate)
-    frames = list(frames)
+# def has_voice_activity(wav_file_path):
+#     vad = webrtcvad.Vad(3)
+#     audio, sample_rate = read_wave(wav_file_path)
+#     frames = frame_generator(30, audio, sample_rate)
+#     frames = list(frames)
 
-    return any(vad.is_speech(frame.bytes, sample_rate) for frame in frames)
+#     return any(vad.is_speech(frame.bytes, sample_rate) for frame in frames)
 
 class Frame(object):
     """Represents a "frame" of audio data."""

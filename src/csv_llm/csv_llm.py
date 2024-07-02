@@ -105,6 +105,9 @@ class LLM:
 
     # Filters
     
+    def __results_no_filter__(self, output):
+        return output
+    
     def __results_filter_dates__(self, output):
         # Find text within the double curly braces
         matches = re.findall(r'\{.*?\}', output)
@@ -363,8 +366,10 @@ Reword the user's prompt using precise and specific language that disambiguates.
 # Action
 Take a deep breath, think it through, assume you are the user and imagine their intent.  Then provide the rewritten prompt.
 """
-        output, completion = self.__chat_wrapper__(messages=self.__message_builder__(system, user_prompt,csv_headers=self.csv_headers,  conversational_context=conversational_context))
-        return output
+        return self.__base_prompt_with_self_reflection__(user_prompt, system,
+            messages=self.__message_builder__(system, user_prompt),  filter_method=self.__results_no_filter__)
+        # output, completion = self.__chat_wrapper__(messages=self.__message_builder__(system, user_prompt,csv_headers=self.csv_headers,  conversational_context=conversational_context))
+        # return output
 
     def prompt_extract_intent(self, user_prompt):
         system = """You are a data scientist and a data visualization expert.
