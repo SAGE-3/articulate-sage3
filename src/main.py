@@ -11,6 +11,7 @@ import collections
 # import webrtcvad
 from pydub import AudioSegment
 import whisper
+from datetime import datetime
 
 import time
 from groq import Groq
@@ -21,6 +22,7 @@ import command_models
 from collections import deque
 
 filename = "./logs/test.json"
+filename2 = "./logs/test2.json"
 
 # Check if the file exists, if not create it with an empty array
 if not os.path.exists(filename):
@@ -41,6 +43,24 @@ def write_to_file(data):
         
     return
 
+# Check if the file exists, if not create it with an empty array
+if not os.path.exists(filename2):
+    with open(filename2, 'w') as file:
+        json.dump([], file)
+
+def write_to_file2(data):
+    # Read the existing content
+    with open(filename2, 'r') as file:
+        array = json.load(file)
+    
+    # Add new data to the array
+    array.append(data)
+    
+    # Write the updated array back to the file
+    with open(filename2, 'w') as file:
+        json.dump(array, file, indent=4)
+        
+    return
 
 class TextRequest(BaseModel):
     prompt: str
@@ -103,7 +123,6 @@ async def transcribeAndProcess(file: UploadFile = File(...)):
 
     return {"transcription": result["text"]}
     
-  
 
 @app.post("/processIfCommand")
 async def process_if_command(request: TextRequest):
@@ -182,7 +201,7 @@ async def createChartOptions(request: TextRequest):
   
   print("Total time elapsed:", end-start)
   
-  write_to_file(json.dumps({
+  chartInformation = {
     "userPrompt": user_prompt,
     "chartContext": chart_context,
     "conversationalContext": conversational_context,
@@ -195,17 +214,17 @@ async def createChartOptions(request: TextRequest):
     "attributes": chosen_attributes_names,
     "attributeReasoning": attrib_reasoning,
     "transformations": transformations,
-    "transformationReasoning": trans_reasoning
-    }))
+    "transformationReasoning": trans_reasoning,
+    "totalElapsedTime": end-start,
+    "date": datetime.now()
+    }
+
+
+  write_to_file(json.dumps(chartInformation, default=str))
   
   return {
       'station_chart_info': station_chart_info,
-          "debug": {
-              "context": conversational_context,
-              "query": user_prompt,
-              "reiteration": user_prompt_modified, 
-              "time": end-start,
-              },
+          "debug": chartInformation,
           }
   
 
@@ -233,7 +252,7 @@ async def transcribe(file: UploadFile = File(...)):
     result = whisper_model.transcribe(wav_file_path)
     os.remove(temp_file_path)
     os.remove(wav_file_path)
-
+    write_to_file2(json.dumps({'utterace': result['text'], 'time': datetime.now()}, default=str))
     return {"transcription": result["text"]}
 
 def read_wave(path):
