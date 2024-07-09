@@ -146,21 +146,32 @@ async def createChartOptions(request: TextRequest):
 
   llm_re = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 1, "dataset": dataset})
   llm_base = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 0,"dataset": dataset})
-  llm_transform = csv_llm.LLM(client, {"model": "gpt-4-turbo-preview", "temperature": 0,"dataset": dataset} )
-  llm = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 1, "dataset": dataset})
+  llm_transform = csv_llm.LLM(client, {"model": "gpt-4o-2024-05-13", "temperature": 0,"dataset": dataset} )
+  llm = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 0, "dataset": dataset})
   conversational_context = request.context
   user_prompt = request.prompt #"""show me car brands vs price, sort by decending prices"""
   user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
                                                  Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
 
-  print("****Generating Chart****")
+  print("****Selecting Stations****")
 
   stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
+  # print(stations)
+  # print(station_reasoning)
+  print()
   
+  if len(stations) == 0:
+    return {}
+  
+  print("****Selecting Dates****")
   # print("****Starting Extracting Stations****")
   dates, dates_reasoning = llm_base.prompt_select_dates(user_prompt_modified)
-  print(dates)
-  print(dates_reasoning)
+  # print(dates)
+  # print(dates_reasoning)
+  print()
+  
+  if len(stations) == 0:
+    return {}
   
   station_info = {}
   for idx,id in enumerate(stations):
@@ -175,35 +186,53 @@ async def createChartOptions(request: TextRequest):
       available_variable_ids.append('Date')
       station_info[id] = {'available_variable_names': available_variable_names, 'available_variable_ids': available_variable_ids}
   station_chart_info = {}
-  for id in station_info.keys():
-      available_variable_names = station_info[id]['available_variable_names']
-      available_variable_ids = station_info[id]['available_variable_ids']
-      chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, available_variable_names)
-      chosen_attribute_ids = []
-      for attr in chosen_attributes_names:
-          print(attr, "--------------------", available_variable_names)
-          # Check if the attribute exists in the available variables
-          if attr in available_variable_names:
-              index = available_variable_names.index(attr)
-              print(index)
-              # Check if index is valid
-              if index != -1:
-                  chosen_attribute_ids.append(available_variable_ids[index])
-              else:
-                  break
+  available_variable_names = station_info[id]['available_variable_names']
+  available_variable_ids = station_info[id]['available_variable_ids']
+  print("****Selecting Attributes****")
+  print()
+  
+  if len(stations) == 0:
+    return {}
+  
+  chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, available_variable_names)
+  chosen_attribute_ids = []
+  for attr in chosen_attributes_names:
+      # print(attr, "--------------------", available_variable_names)
+      # Check if the attribute exists in the available variables
+      if attr in available_variable_names:
+          index = available_variable_names.index(attr)
+          # print(index)
+          # Check if index is valid
+          if index != -1:
+              chosen_attribute_ids.append(available_variable_ids[index])
           else:
               break
-      transformations, trans_reasoning = llm_transform.prompt_transformations(user_prompt_modified, chosen_attributes_names)
-      chartType, chart_frequencies, chart_reasoning, chart_scope = llm.prompt_charts_via_chart_info(user_prompt_modified, chosen_attributes_names)
-      station_chart_info[id] = {'attributes': chosen_attribute_ids, 'transformations': transformations, 'chartType': chartType, 'available_attribute_info': station_info[id], 'dates': dates} #TODO check if values exist
-  print(f"************Generated a {station_chart_info}**************")
+      else:
+          break
+  print("****Selecting Transformations****", chosen_attribute_ids)
+  transformations, trans_reasoning = llm_transform.prompt_transformations(user_prompt_modified, chosen_attribute_ids)
+  chartType, chart_frequencies, chart_reasoning, chart_scope = llm.prompt_charts_via_chart_info(user_prompt_modified, chosen_attributes_names)
+  for id in station_info.keys():
+    station_chart_info[id] = {'attributes': chosen_attribute_ids, 'transformations': transformations, 'chartType': chartType, 'available_attribute_info': station_info[id], 'dates': dates} #TODO check if values exist
+  # print(f"************Generated a {station_chart_info}**************")
+  
+  if len(stations) == 0:
+    return {}
+  
   end = time.time()
   
+  summarized_response = llm_transform.prompt_summarize_reasoning(user_prompt, chart_reasoning, attrib_reasoning, dates_reasoning, station_reasoning, trans_reasoning)
+  
   print("Total time elapsed:", end-start)
+  
+  print()
+  
   
   chartInformation = {
     "userPrompt": user_prompt,
     "chartContext": chart_context,
+    "chartType": chartType,
+    "chartReasoning": chart_reasoning,
     "conversationalContext": conversational_context,
     "userPromptModified": user_prompt_modified,
     "userPromptReasoning": user_prompt_reasoning,
@@ -216,6 +245,7 @@ async def createChartOptions(request: TextRequest):
     "transformations": transformations,
     "transformationReasoning": trans_reasoning,
     "totalElapsedTime": end-start,
+    "summarizedResponse": summarized_response,
     "date": datetime.now()
     }
 

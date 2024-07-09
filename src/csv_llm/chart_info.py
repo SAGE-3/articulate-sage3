@@ -5,6 +5,7 @@ chart_decision_tree = {
     "Column Histogram": "Distribution -> One Variable -> Few Data Points -> Column Histogram",
     "Line Histogram": "Distribution -> One Variable -> Many Data Points -> Line Histogram",
     "Scatter Chart": "Distribution -> Two Variables -> Scatter Chart",
+    "Boxplot": "Composition -> one variable -> Boxplot",
     # "3D Area Chart": "Distribution -> Three Variables -> 3D Area Chart",
     # "Bubble Chart": "Relationship -> Three Variable -> Bubble Chart",
     # "Bubble Chart 4": "Relationship -> Three Variable -> Bubble Chart",
@@ -12,7 +13,7 @@ chart_decision_tree = {
     # "Bar Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Many Items -> Bar Chart",
     # "Column Chart": "Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Few Items -> Column Chart",
     # "Circular Area Chart": "Comparison -> Over Time -> Many Periods -> Cyclical Data -> Circular Area Chart",
-    # "Column Chart": "Comparison -> Over Time -> Few Periods -> Single or Few Categories -> Column Chart",
+    # "Column Chart": "Comparison -> Over Time -> Few Periods -> Singlshow me or Few Categories -> Column Chart",
     "Line Chart": "Comparison -> Over Time -> Few Periods -> Many Categories -> Line Chart",
     # "Stacked 100% Column Chart": "Composition -> Changing Over Time -> Few Periods -> Only Relative Differences Matter -> Stacked 100% Column Chart",
     # "Stacked Column Chart": "Composition -> Changing Over Time -> Few Periods -> Relative and Absolute Differences Matter -> Stacked Column Chart",
@@ -209,19 +210,26 @@ chart_info = {
   #     "Inventory audit of t-shirts showing numbers damaged and refurbished: t-shirt status such as damaged or refurbished (categorical), number of t-shirts (numerical)",
   # },
   "Pie Chart": {
-    "description": "simple share of total",
-    "attribute_counts": {"categorical": 1, "numerical": 1},
+    "description": "To show the distribution of a climate variable across multiple stations",
+    "attribute_counts": {"numerical": 1},
     "attributes": [
-      {
-        "type": "categorical",
-        "notes": "Used in series",
-      },
       {
         "type": "numerical",
         "notes": "Used in series",
       },
     ],
-    "example": "Ad revenue share: ad type (categorical), revenue (numerical)",
+    "example": "total rainfall (numerical)",
+  },
+    "Boxplot": {
+    "description": "To show the distributions of one variable for multiple categories",
+    "attribute_counts": {"numerical": 1},
+    "attributes": [
+      {
+        "type": "numerical",
+        "notes": "Used in series",
+      },
+    ],
+    "example": "rainfall (numerical) for station 1 2 and 3",
   },
   # "Stacked Area Chart": {
   #   "description": "relative and absolute differences matter (many periods)",
@@ -343,7 +351,7 @@ def chart_info_filter(attributes):
         return chart_info, "\n".join(chart_decision_tree.values())
 
     scoped_charts = {key:value for key, value in chart_info.items() }
-    print("****scoped charts*****", scoped_charts)
+    # print("****scoped charts*****", scoped_charts)
     scoped_charts_instructions = "\n".join([chart_decision_tree[key] for key in scoped_charts.keys()])
     return (scoped_charts, scoped_charts_instructions)
 

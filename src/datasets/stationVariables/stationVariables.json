@@ -1,83 +1,11 @@
 [
   {
-    "chords_id": 80542,
-    "created_at": "2024-03-27 00:40:28.991693",
-    "last_updated": "2024-03-27 00:40:28.991704",
-    "unit": "W/m²",
-    "var_id": "LWnet_1_Avg",
-    "var_name": "Net longwave radiation"
-  },
-  {
-    "chords_id": 80562,
-    "created_at": "2024-03-27 00:40:36.195006",
-    "last_updated": "2024-03-27 00:40:36.195018",
-    "unit": "kPa",
-    "var_id": "Psl_1",
-    "var_name": "Sea level pressure"
-  },
-  {
-    "chords_id": 80561,
-    "created_at": "2024-03-27 00:40:35.791999",
-    "last_updated": "2024-03-27 00:40:35.792015",
-    "unit": "kPa",
-    "var_id": "P_1",
-    "var_name": "Pressure"
-  },
-  {
-    "chords_id": 79990,
-    "created_at": "2024-03-26 05:06:28.590551",
-    "last_updated": "2024-03-26 05:06:28.590570",
-    "unit": "%",
-    "var_id": "RH_1_Avg",
-    "var_name": "Relative humidity, sensor 1"
-  },
-  {
-    "chords_id": 80541,
-    "created_at": "2024-03-27 00:40:28.618213",
-    "last_updated": "2024-03-27 00:40:28.618225",
-    "unit": "W/m²",
-    "var_id": "SWnet_1_Avg",
-    "var_name": "Net shortwave radiation"
-  },
-  {
     "chords_id": 80537,
     "created_at": "2024-03-27 00:40:27.623891",
     "last_updated": "2024-03-27 00:40:27.623903",
     "unit": "W/m²",
     "var_id": "SWin_1_Avg",
     "var_name": "Incoming shortwave radiation"
-  },
-  {
-    "chords_id": 79991,
-    "created_at": "2024-03-26 05:06:28.941300",
-    "last_updated": "2024-03-26 05:06:28.941313",
-    "unit": "Deg C",
-    "var_id": "Tair_2_Avg",
-    "var_name": "Air temperature, sensor 2"
-  },
-  {
-    "chords_id": 80539,
-    "created_at": "2024-03-27 00:40:28.127015",
-    "last_updated": "2024-03-27 00:40:28.127026",
-    "unit": "W/m²",
-    "var_id": "LWin_1_Avg",
-    "var_name": "Incoming longwave radiation"
-  },
-  {
-    "chords_id": 80547,
-    "created_at": "2024-03-27 00:40:30.539037",
-    "last_updated": "2024-03-27 00:40:30.539052",
-    "unit": "°C",
-    "var_id": "Tsrf_1_Avg",
-    "var_name": "Surface temperature"
-  },
-  {
-    "chords_id": 80548,
-    "created_at": "2024-03-27 00:40:30.771785",
-    "last_updated": "2024-03-27 00:40:30.771799",
-    "unit": "°C",
-    "var_id": "Tsky_1_Avg",
-    "var_name": "Sky temperature"
   },
   {
     "chords_id": 79989,
@@ -88,14 +16,6 @@
     "var_name": "Air temperature, sensor 1"
   },
   {
-    "chords_id": 80545,
-    "created_at": "2024-03-27 00:40:30.048515",
-    "last_updated": "2024-03-27 00:40:30.048528",
-    "unit": "W/m²",
-    "var_id": "Rnet_1_Avg",
-    "var_name": "Net radiation"
-  },
-  {
     "chords_id": 80613,
     "created_at": "2024-03-27 01:01:31.269085",
     "last_updated": "2024-03-27 01:01:31.269097",
@@ -104,36 +24,12 @@
     "var_name": "Soil moisture, sensor 1"
   },
   {
-    "chords_id": 80543,
-    "created_at": "2024-03-27 00:40:29.305811",
-    "last_updated": "2024-03-27 00:40:29.305823",
-    "unit": "W/m²",
-    "var_id": "Rin_1_Avg",
-    "var_name": "Net incoming radiation"
-  },
-  {
     "chords_id": 80555,
     "created_at": "2024-03-27 00:40:33.876170",
     "last_updated": "2024-03-27 00:40:33.876182",
     "unit": "m/s",
     "var_id": "WS_1_Avg",
     "var_name": "Mean wind speed"
-  },
-  {
-    "chords_id": 80540,
-    "created_at": "2024-03-27 00:40:28.355951",
-    "last_updated": "2024-03-27 00:40:28.355962",
-    "unit": "W/m²",
-    "var_id": "LWout_1_Avg",
-    "var_name": "Outgoing longwave radiation"
-  },
-  {
-    "chords_id": 80538,
-    "created_at": "2024-03-27 00:40:27.900220",
-    "last_updated": "2024-03-27 00:40:27.900242",
-    "unit": "W/m²",
-    "var_id": "SWout_1_Avg",
-    "var_name": "Outgoing shortwave radiation"
   },
   {
     "chords_id": 80570,

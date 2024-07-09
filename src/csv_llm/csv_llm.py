@@ -64,33 +64,33 @@ class LLM:
         messages = [{"role": "system", "content": system}]
         
         if few_shot_context:
-            print("using few shot samples")
+            # print("using few shot samples")
             messages += few_shot_context
         
         # User Msg Builder
         user_message = []
 
         if csv_context:
-            print(csv_context)
-            print("using csv context")
+            # print(csv_context)
+            # print("using csv context")
             user_message.append(f"# This is additional context: \n{csv_context}")
             # user_message.append(f"This is the CSV decomposed: {csv_context}")
             
         if conversational_context:
-            print("using conversational context")
+            # print("using conversational context")
             user_message.append(f"# This is additional context from the conversation: \n{conversational_context}")
             # user_message.append(f"This is the CSV decomposed: {csv_context}")
 
         if csv_headers:
-            print("using csv headers", csv_headers)
+            # print("using csv headers", csv_headers)
             user_message.append(f"# These are the attributes names/ headers in the dataset: \n{csv_headers}")
 
         if chart_type:
-            print("using recommended chart type(s)", chart_type)
+            # print("using recommended chart type(s)", chart_type)
             user_message.append(f"# These are the recommended chart type(s): \n{chart_type}")
 
         if attributes:
-            print("using recommened attributes", attributes)
+            # print("using recommened attributes", attributes)
             user_message.append(f"# These are the attributes: \n{attributes}")
 
         if len(user_message) != 0:
@@ -172,6 +172,22 @@ class LLM:
         except:
             return ""
 
+    # class PromptTemplates:
+    def __base_prompt__(self, user_prompt, system ):
+        output_history = []
+        results_history = []
+        messages = [{"role": "system", "content": system}]
+
+        output, completion = self.__chat_wrapper__(messages=messages)
+        output_history.append(output)
+
+        if output:
+            return output, output_history
+        else:
+            return "", output_history
+        
+        self.__base_prompt_with_self_reflection__(user_prompt, system,
+            messages=self.__message_builder__(system, user_prompt), filter_method=self.__results_filter_dates__)
 
     # class PromptTemplates:
     def __base_prompt_with_self_reflection__(self, user_prompt, system, messages, filter_method):
@@ -192,7 +208,7 @@ class LLM:
                 break
             # results_history.append(filter_method(output))
 
-        print(results_history)
+        # print(results_history)
         results = [result for result in results_history if result]
         if results:
             return results[-1], output_history
@@ -235,34 +251,24 @@ class LLM:
 
 
     Distribution -> One Variable -> Few Data Points -> Column Histogram
-    Distribution -> One Variable -> Many Data Points -> Line Histogram
-    Distribution -> Two Variables -> Scatter Chart
-    Distribution -> Three Variables -> 3D Area Chart
+    Distribution -> Two or more variables -> Scatter Chart
+    Distribution -> single variable -> Boxplot
 
-    Relationship -> Two Variable -> e Chart
-    Relationship -> Three Variable -> Bubble Chart
 
-    Comparison -> Among Items -> Two Variables Per Item -> Variable Width Column Chart
-    Comparison -> Among Items -> One Variables Per Item -> Many Categories -> Table
-    Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Many Items -> Bar Chart
-    Comparison -> Among Items -> One Variables Per Item -> Few Categories -> Few Items -> Column Chart
-    Comparison -> Over Time -> Many Periods -> Cyclical Data -> Circular Area Chart
     Comparison -> Over Time -> Many Periods -> Non-Cyclical Data -> Line Chart
-    Comparison -> Over Time -> Few Periods -> Single or Few Categories -> Column Chart
     Comparison -> Over Time -> Few Periods -> Many Categories -> Line Chart
 
-    Composition -> Changing Over Time -> Few Periods -> Only Relative Differences Matter -> Stacked 100% Column Chart
-    Composition -> Changing Over Time -> Few Periods -> Relative and Absolute Differences Matter -> Stacked Column Chart
-    Composition -> Changing Over Time -> Many Periods -> Only Relative Differences Matter -> Stacked 100% Area Chart
-    Composition -> Changing Over Time -> Many Periods-> Relative and Absolute Differences Matter -> Stacked Area Chart
     Composition -> Static -> Sample Share of Total -> Pie Chart
-    Composition -> Static -> Accumulation or Subtraction to Total -> Waterfall Chart
-    Composition -> Static -> Components of Components -> Stacked 100% Column Chart  with SubComponents
 
+    Classify the user's prompt. 
+    If a user explicitly asks for a chart, pick the chart that they asked for.
+    For example, if the user asks for a pie chart, show them a pie chart.
+    
+    Do not disagree with the user's request. 
+    Choose the chart that the user asks for.
 
+    Provide your answer at the end in this format ["Pie Chart"]
 
-    Classify the user's prompt. Multiple solutions are possible and encouraged.
-    Provide your answer at the end in this format ["Answer 1","Answer 2",...]
 
     """
 
@@ -292,17 +298,21 @@ class LLM:
         
 
         charts_details, charts_decision_tree = chart_info_filter(attributes)
-        print("available Charts", list(set(charts_details)))
+        # print("available Charts", list(set(charts_details)))
         system = f"""# Task
 You are a visualization expert with ten years of experience. Choose the best chart from the limited Charts list choices provided based on the user's prompt (and potentially extra information from the user).
-It is important to choose the appropriate graph, not based on graph popularity, but rather on appropriateness infered from the analyzed dataset.  Don't be afraid to be creative and select a chart type that will impress the user.
+It is important to choose the appropriate graph, not based on graph popularity, but rather on appropriateness infered from the analyzed dataset.
 
 # Charts
 {list(set(charts_details))}
 
+    Do not disagree with the user's request. 
+    Choose the chart that the user asks for.
+
+    
 # Action
 Take a deep breath, think it through, assume you are the user and imagine their intent, write your reasoning.
-Provide your answer at the end in this format ["Answer 1"]
+    Provide your answer at the end in this format ["Pie Chart"]
 
     """
 
@@ -349,15 +359,14 @@ Transformation Deduction:
 ["Air temperature, sensor 1" > 75]
 Note: Do not filter the data by date
 
-For extra context, todays date is {datetime.datetime.now()}
 """
 
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
-            messages=self.__message_builder__(system, user_prompt,attributes=attributes),  filter_method=self.__results_filter__)
+            messages=self.__message_builder__(system, user_prompt,attributes=attributes, csv_headers=attributes),  filter_method=self.__results_filter__)
 
 
     def prompt_reiterate(self, user_prompt, conversational_context):
-        print(user_prompt, conversational_context)
+        # print(user_prompt, conversational_context)
         #You are a data scientist and a data visualization expert.
         system = """You are a data scientist and a data visualization expert.
 # Task
@@ -365,6 +374,9 @@ Reword the user's prompt using precise and specific language that disambiguates.
 
 # Action
 Take a deep breath, think it through, assume you are the user and imagine their intent.  Then provide the rewritten prompt.
+
+Note that the data is only available from January 1st, 2024 to July 1st, 2024. 
+
 """
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
             messages=self.__message_builder__(system, user_prompt),  filter_method=self.__results_no_filter__)
@@ -385,16 +397,49 @@ Take a deep breath, think it through, assume you are the user and imagine their 
     #        Station 0605, PowerlineTrail is located on latitude: 22.113562 and longitude -159.438786
 
     def prompt_select_stations(self, user_prompt):
-        system = """ You are an expert Oahu database manager. You are tasked to select station IDs that fit the user's criteria.
-        These stations will be used to answer the user's query on Oahu's climate.
+        system = """ You are an expert Hawaii database manager. You are tasked to select station IDs that fit the user's criteria.
+        These stations will be used to answer the user's query on Hawaii's climate.
         
         Here are a list of stations:
-        Station 0521, Kaala (Station 1) is located on latitude: 21.50675 and longitude -158.144861
-        Station 0502, NuuanuRes1 (Station 2) is located on latitude: 21.339124 and longitude -157.836859    
-        Station 0501, Lyon (Station 3) is located on latitude: 21.333 and longitude -157.8025
+        Station 0603, LowerLimahuli (Station 1) is located on latitude 22.219805 and longitude -159.575195
+        Station 0602, CommonGround (Station 2) is located on latitude 22.197439 and longitude -159.42123
+        Station 0601, Waipa (Station 3) is located on latitude 22.202647 and longitude -159.518833
+        Station 0521, Kaala (Station 4) is located on latitude 21.50675 and longitude -158.144861
+        Station 0502, NuuanuRes1 (Station 5) is located on latitude 21.339124 and longitude -157.836859
+        Station 0501, Lyon (Station 6) is located on latitude 21.333 and longitude -157.8025
+        Station 0412, Honolimaloo (Station 7) is located on latitude 21.131411 and longitude -156.758626
+        Station 0287, Mamalahoa (Station 8) is located on latitude 19.80258 and longitude -155.850629
+        Station 0286, Palamanui (Station 9) is located on latitude 19.73756 and longitude -155.99582
+        Station 0283, Laupahoehoe (Station 10) is located on latitude 19.93217 and longitude -155.29129
+        Station 0282, Spencer (Station 11) is located on latitude 19.96358 and longitude -155.25014
+        Station 0281, IPIF (Station 12) is located on latitude 19.69748 and longitude -155.0954
+        Station 0252, Lalamilo (Station 13) is located on latitude 20.019528 and longitude -155.677085
+        Station 0251, Kehena (Station 14) is located on latitude 20.122834 and longitude -155.749329
+        Station 0243, KonaHema (Station 15) is located on latitude 19.2068247 and longitude -155.8109802
+        Station 0242, KaiauluPuuWaawaa (Station 16) is located on latitude 19.77241 and longitude -155.83118
+        Station 0241, Keahuolu (Station 17) is located on latitude 19.668669 and longitude -155.957474
+        Station 0231, Kaiholena (Station 18) is located on latitude 19.16877 and longitude -155.57035
+        Station 0213, Piihonua (Station 19) is located on latitude 19.7064059 and longitude -155.1873737
+        Station 0212, Kulaimano (Station 20) is located on latitude 19.834341 and longitude -155.122435
+        Station 0211, Kanakaleonui (Station 21) is located on latitude 19.845036 and longitude -155.362586
+        Station 0202, Keaau (Station 22) is located on latitude 19.6061748 and longitude -155.0515231
+        Station 0201, Nahuku (Station 23) is located on latitude 19.415215 and longitude -155.238394
+        Station 0154, Waikamoi (Station 24) is located on latitude 20.773636 and longitude -156.222311
+        Station 0153, Summit (Station 25) is located on latitude 20.710361 and longitude -156.25675
+        Station 0151, ParkHQ (Station 26) is located on latitude 20.759806 and longitude -156.248167
+        Station 0144, Kahikinui (Station 27) is located on latitude 20.633945 and longitude -156.273889
+        Station 0131, LahainaWTP (Station 28) is located on latitude 20.89072 and longitude -156.65493
+        Station 0121, Lipoa (Station 29) is located on latitude 20.7458333 and longitude -156.4305556
+        Station 0119, KulaAg (Station 30) is located on latitude 20.757889 and longitude -156.320028
+        Station 0118, Pulehu (Station 31) is located on latitude 20.79532 and longitude -156.35991
+        Station 0116, Keokea (Station 32) is located on latitude 20.7067 and longitude -156.3554
+        Station 0115, Piiholo (Station 33) is located on latitude 20.8415 and longitude -156.2948
         
-        If the user does not explicitly say which stations to choose from, you may select all of the stations
-        (EX: ["0502", "0501", "0521"])
+        The maximum number of stations that you are able to select is 5.
+        DO NOT select more than 5 stations at a time.
+        Be very consice with your answers. 
+        Do not pick more stations than is necessary. 
+        If the user picks a certain island, only choose stations on that island. 
 
         Take a deep breath. Think it through. Imagine you are the user and imagine their intent. 
         Provide your answer only in the format ["Answer 1", "Answer 2", ...]
@@ -406,8 +451,7 @@ Take a deep breath, think it through, assume you are the user and imagine their 
     def prompt_select_dates(self, user_prompt):
         system = """ You are a date expert selector.
         You will be given a query from a user and you will select the appropriate dates to filter the data by. 
-        For context, today is 2024-04-01T00:00:00.000000Z.
-        The dataset only has data since 2023-04-01T00:00:00.000000Z, so picking dates past this will not work.
+        The dataset only has data since 2024-01-01T00:00:00.000000Z, so picking dates past this will not work.
         
         Here are some examples of what a user might say and how you will respond. 
         
@@ -418,14 +462,43 @@ Take a deep breath, think it through, assume you are the user and imagine their 
         Answer: {"startDate": "2024-01-01T00:00:00.000000Z", "endDate": "2024-02-01T00:00:00.000000Z"}
         
         Query: Does rainfall and soil temperature have a correlation?
-        Answer: {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        Answer: {"startDate": "2024-01-01T00:00:00.000000Z", "endDate": "2024-06-01T00:00:00.000000Z"}
         
         If the user does not explicitly say which stations to choose from, you may select all of the stations
         (EX: ["0502", "0501", "0521"])
 
         Take a deep breath. Think it through. Imagine you are the user and imagine their intent. 
-        You are only strictly to answer in the format {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
-        If you are unsure, just pick the entire dataset. EX: {"startDate": "2023-04-01T00:00:00.000000Z", "endDate": "2024-04-01T00:00:00.000000Z"}
+        You are only strictly to answer in the format {"startDate": "2024-01-01T00:00:00.000000Z", "endDate": "2024-07-01T00:00:00.000000Z"}
+        If you are unsure, just pick the entire dataset. EX: {"startDate": "2024-01-01T00:00:00.000000Z", "endDate": "today's date"}
+        
+
         """
+        system += f"        For extra context, todays date is {datetime.datetime.now()}"
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
             messages=self.__message_builder__(system, user_prompt), filter_method=self.__results_filter_dates__)
+        
+    def prompt_summarize_reasoning(self, user_prompt, chart_type_reasoning, attribute_reasoning, date_reasoning, station_reasoning, transformation_reasoning):
+        system = f""" You are an expert summarizer.
+        You have just created chart(s) for the user based on a prompt.
+        Here is the user's prompt: {user_prompt}
+        
+        Here is some information on the decisions that you have made when creating this chart.
+        
+        {chart_type_reasoning}
+        
+        {attribute_reasoning}
+       
+        {date_reasoning}
+        
+        {station_reasoning}
+        
+        {transformation_reasoning}
+        
+        You now need to respond back to the user. 
+        Say a single notable sentence to the user that sumarizes the decisions that you made. 
+        
+        Do not write more information than is necessary.
+        
+        Please note that the data is only possible to have this years data, which starts on January 1st, 2024.
+        """
+        return self.__base_prompt__(user_prompt, system)
