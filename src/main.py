@@ -152,7 +152,7 @@ async def createChartOptions(request: TextRequest):
   user_prompt = request.prompt #"""show me car brands vs price, sort by decending prices"""
   user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
                                                  Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
-
+  print(f'For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context}')
   print("****Selecting Stations****")
 
   stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
@@ -161,7 +161,13 @@ async def createChartOptions(request: TextRequest):
   print()
   
   if len(stations) == 0:
-    return {}
+    print("Error in getting stations, trying one more time")
+    print(stations)
+    stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
+    if(len(stations) == 0):
+      return {}
+    else:
+      print("Fixed")
   
   print("****Selecting Dates****")
   # print("****Starting Extracting Stations****")
@@ -170,8 +176,13 @@ async def createChartOptions(request: TextRequest):
   # print(dates_reasoning)
   print()
   
-  if len(stations) == 0:
-    return {}
+  if len(dates.keys()) == 0:
+    print("Error in getting dates, sending all dates")
+    print(dates)
+    dates = {
+      "startDate": "2024-01-01T00:00:00.000000Z",
+      "endDate": "2024-07-10T11:20:54.826724Z"
+    }
   
   station_info = {}
   for idx,id in enumerate(stations):
@@ -191,10 +202,17 @@ async def createChartOptions(request: TextRequest):
   print("****Selecting Attributes****")
   print()
   
-  if len(stations) == 0:
-    return {}
-  
   chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, available_variable_names)
+  
+  if len(chosen_attributes_names) == 0:
+    print("Error in getting attributes, trying one more time")
+    print(chosen_attributes_names)
+    chosen_attributes_names, attrib_reasoning = llm_base.prompt_attributes(user_prompt_modified, available_variable_names)
+    if len(chosen_attributes_names) == 0:
+      return {}
+    else:
+      print("Fixed")
+  
   chosen_attribute_ids = []
   for attr in chosen_attributes_names:
       # print(attr, "--------------------", available_variable_names)
@@ -212,6 +230,7 @@ async def createChartOptions(request: TextRequest):
   print("****Selecting Transformations****", chosen_attribute_ids)
   transformations, trans_reasoning = llm_transform.prompt_transformations(user_prompt_modified, chosen_attribute_ids)
   chartType, chart_frequencies, chart_reasoning, chart_scope = llm.prompt_charts_via_chart_info(user_prompt_modified, chosen_attributes_names)
+  
   for id in station_info.keys():
     station_chart_info[id] = {'attributes': chosen_attribute_ids, 'transformations': transformations, 'chartType': chartType, 'available_attribute_info': station_info[id], 'dates': dates} #TODO check if values exist
   # print(f"************Generated a {station_chart_info}**************")
