@@ -276,38 +276,25 @@ class LLM:
             messages=self.__message_builder__(system, user_prompt, few_shot_context=self.samples, csv_context=self.__limit_csv_scope__(attributes, self.csv_context), attributes=attributes),
             filter_method=self.__results_filter_charts__)
 
-    def prompt_attribute_positioning(self, user_prompt, attributes=None):
-        system = """Given the following chart Requirements
 
-    Column Chart -> [xAxis, yAxis, label (optional)]
-    Bar Chart -> [xAxis, yAxis]
-    Scatter Chart -> [xAxis, yAxis]
-    Circular Area Chart -> [indicator, value, label (optional)] where indicators would be names around the chart, value would be the value at each indicator, and label is an optional name that would represent multiple traces
-    Line chart -> [xAxis, yAxis, label (optional)]
-    Column Histogram -> [xAxis, yAxis]
-    
-
-
-    Classify the user's prompt. Multiple solutions are possible and encouraged.
-    Provide your answer at the end in this format ["Answer 1","Answer 2",...]
-
-    """
 
     def prompt_charts_via_chart_info(self, user_prompt, attributes):
         # print(json.dumps(chart_info_filter(["Car", "Price"])[0], indent=2))
         
-
         charts_details, charts_decision_tree = chart_info_filter(attributes)
         # print("available Charts", list(set(charts_details)))
         system = f"""# Task
-You are a visualization expert with ten years of experience. Choose the best chart from the limited Charts list choices provided based on the user's prompt (and potentially extra information from the user).
+You are a visualization expert with decades of experience. Choose the best chart from the limited list of choices provided based on the user's prompt (and potentially extra information from the user).
 It is important to choose the appropriate graph, not based on graph popularity, but rather on appropriateness infered from the analyzed dataset.
-
-# Charts
-{list(set(charts_details))}
-
     Do not disagree with the user's request. 
     Choose the chart that the user asks for.
+    If the user explicitly asks for a chart type, do not pick a chart type that you think would be better. 
+    Pick the chart type that the user asks for.
+    
+# Charts
+    ['Boxplot', 'Scatter Chart', 'Column Histogram', 'Pie Chart', 'Line Histogram', 'Line Chart']
+
+
 
     
 # Action
@@ -364,18 +351,46 @@ Note: Do not filter the data by date
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
             messages=self.__message_builder__(system, user_prompt,attributes=attributes, csv_headers=attributes),  filter_method=self.__results_filter__)
 
+    def prompt_proactive_reiterate(self, user_prompt, conversational_context):
+        # print(user_prompt, conversational_context)
+        #You are a data scientist and a data visualization expert.
+        system = f"""You are a proactive data visualization expert.
+        Your task is to proactively generate a useful chart for the user based on the context of the current conversation.
+        {conversational_context}
+        
+        {user_prompt}
+        Take a deep breath, think it through, assume you are the user and imagine their intent.  
+        Response with a prompt that will create a useful visualization for the user.
+        
+        The charts you are able to generate are box plot, scatter chart, line chart, histogram, and pie chart.
+        Try to generate a chart that the user has not yet seen but is still relevant to the context.
+        Do not generate the same chart that the user has already seen. 
+        Try to pick different variables or chart types. 
+        You can also explore different stations near the selected stations. 
+        Or you can choose to show an individual station.
+
+        Note that the data is only available from January 1st, 2024 to July 1st, 2024. 
+        Be very precise. Do not respond back with anything other than the rewritten prompt. 
+        Do not include quotation marks, just return a prompt.
+
+        """
+        return self.__base_prompt_with_self_reflection__(user_prompt, system,
+            messages=self.__message_builder__(system, user_prompt),  filter_method=self.__results_no_filter__)
 
     def prompt_reiterate(self, user_prompt, conversational_context):
         # print(user_prompt, conversational_context)
         #You are a data scientist and a data visualization expert.
         system = """You are a data scientist and a data visualization expert.
 # Task
-Reword the user's prompt using precise and specific language that disambiguates.  You encouraged to make assumptions about the users intent given adequate evidence.  Do note that the user's request pertains to visualization and graph generation.
+Reword the user's prompt using precise and specific language that disambiguates.  Do note that the user's request pertains to visualization and graph generation.
 
 # Action
 Take a deep breath, think it through, assume you are the user and imagine their intent.  Then provide the rewritten prompt.
 
 Note that the data is only available from January 1st, 2024 to July 1st, 2024. 
+The only data attributes that you may use are date, rainfall, temperature, solar radiation, wind speed, and soil moisture.
+Be very precise. Do not respond back with anything other than the rewritten prompt. 
+Do not include quotation marks, just rewrite the prompt
 
 """
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
@@ -396,9 +411,9 @@ Take a deep breath, think it through, assume you are the user and imagine their 
         return output
     #        Station 0605, PowerlineTrail is located on latitude: 22.113562 and longitude -159.438786
 
-    def prompt_select_stations(self, user_prompt):
-        system = """ You are an expert Hawaii database manager. You are tasked to select station IDs that fit the user's criteria.
-        These stations will be used to answer the user's query on Hawaii's climate.
+    def prompt_select_stations(self, user_prompt, data_statistics):
+        system = f""" You are tasked to select station IDs that fit the user's criteria.
+        These stations will be used to answer the user's query on visualizing Hawaii's climate data.
         
         Here are a list of stations:
         Station 0603, LowerLimahuli (Station 1) is located on latitude 22.219805 and longitude -159.575195
@@ -435,6 +450,9 @@ Take a deep breath, think it through, assume you are the user and imagine their 
         Station 0116, Keokea (Station 32) is located on latitude 20.7067 and longitude -156.3554
         Station 0115, Piiholo (Station 33) is located on latitude 20.8415 and longitude -156.2948
         
+        Here is some statistics on the data
+        {data_statistics}
+        
         The maximum number of stations that you are able to select is 5.
         DO NOT select more than 5 stations at a time.
         Be very consice with your answers. 
@@ -442,8 +460,9 @@ Take a deep breath, think it through, assume you are the user and imagine their 
         If the user picks a certain island, only choose stations on that island. 
 
         Take a deep breath. Think it through. Imagine you are the user and imagine their intent. 
-        Provide your answer only in the format ["Answer 1", "Answer 2", ...]
-        Only give me the station id numbers. For example ["0502", "0521", ...]
+        Provide your answer only in the format  ["0502", "0521", ...]
+        Explain your reasoning.
+        Try to respond with at least 1 station.
         """
         return self.__base_prompt_with_self_reflection__(user_prompt, system,
             messages=self.__message_builder__(system, user_prompt),  filter_method=self.__results_filter__)
@@ -484,21 +503,25 @@ Take a deep breath, think it through, assume you are the user and imagine their 
         
         Here is some information on the decisions that you have made when creating this chart.
         
+        Choosing the chart type:
         {chart_type_reasoning}
         
+        Choosing the attributes:
         {attribute_reasoning}
        
+        Choosing the dates
         {date_reasoning}
         
+        Choosing the stations:
         {station_reasoning}
         
+        Choosing the transformations
         {transformation_reasoning}
         
         You now need to respond back to the user. 
-        Say a single notable sentence to the user that sumarizes the decisions that you made. 
+        Say a sentence or two that you think will help the user.
         
         Do not write more information than is necessary.
         
-        Please note that the data is only possible to have this years data, which starts on January 1st, 2024.
         """
         return self.__base_prompt__(user_prompt, system)

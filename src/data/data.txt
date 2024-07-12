@@ -1,0 +1,1245 @@
+For Station 1 with the ID: 0603, Here are the statistics for:
+Rainfall:
+  Average: 0.033382037533512064
+  Min: 0
+  Max: 7.595
+  Standard Deviation: 0.332503786362461
+  Variance: 0.11055876794537309
+  Total: 24.903000000000002
+Soil moisture:
+  Average: 0.38763941018766757
+  Min: 0.224
+  Max: 0.529
+  Standard Deviation: 0.08694963443266338
+  Variance: 0.0075602389279738015
+  Total: 289.1790000000003
+Solar Energy:
+  Average: 187.9496441786059
+  Min: -9.386206
+  Max: 1247.194
+  Standard Deviation: 316.6037090200948
+  Variance: 100237.90856528087
+  Total: 140210.43455723976
+Air temperature:
+  Average: 22.39069705093834
+  Min: 16.61
+  Max: 28.23
+  Standard Deviation: 2.2173147305105205
+  Variance: 4.916484614138942
+  Total: 16703.46000000001
+Wind speed:
+  Average: 1.1995120643431636
+  Min: 0
+  Max: 4.026
+  Standard Deviation: 0.5814899797060579
+  Variance: 0.33813059649855154
+  Total: 894.836
+
+
+For Station 2 with the ID: 0602, Here are the statistics for:
+Rainfall:
+  Average: 0.015398123324396783
+  Min: 0
+  Max: 2.597
+  Standard Deviation: 0.12718633351392347
+  Variance: 0.01617636343271497
+  Total: 11.486999999999998
+Soil moisture:
+  Average: 0.46388471849865953
+  Min: 0.373
+  Max: 0.529
+  Standard Deviation: 0.03464551232918231
+  Variance: 0.0012003115245515232
+  Total: 346.05800000000016
+Solar Energy:
+  Average: 189.33178170309853
+  Min: -6.245197
+  Max: 1344.628
+  Standard Deviation: 320.3398896183997
+  Variance: 102617.6448807285
+  Total: 141241.50915051156
+Air temperature:
+  Average: 21.312077747989274
+  Min: 10.99
+  Max: 28.38
+  Standard Deviation: 2.6949483140542134
+  Variance: 7.2627464154236465
+  Total: 15898.80999999999
+Wind speed:
+  Average: 1.3864048257372654
+  Min: 0
+  Max: 5.075
+  Standard Deviation: 1.1866625342212216
+  Variance: 1.408167970124332
+  Total: 1034.2579999999998
+
+
+For Station 3 with the ID: 0601, Here are the statistics for:
+Rainfall:
+  Average: 0.01981501340482574
+  Min: 0
+  Max: 2.823
+  Standard Deviation: 0.15886765617009552
+  Variance: 0.025238932176979686
+  Total: 14.781999999999996
+Soil moisture:
+  Average: 0.5758646112600536
+  Min: 0
+  Max: 0.709
+  Standard Deviation: 0.09471605978320355
+  Variance: 0.008971131980855388
+  Total: 429.59500000000014
+Solar Energy:
+  Average: 185.99427133565683
+  Min: -8.028849
+  Max: 1254.241
+  Standard Deviation: 314.68408521410686
+  Variance: 99026.07348703928
+  Total: 138751.72641639996
+Air temperature:
+  Average: 22.06396782841823
+  Min: 10.94
+  Max: 28.62
+  Standard Deviation: 2.9404578594369744
+  Variance: 8.646292423124674
+  Total: 16459.719999999994
+Wind speed:
+  Average: 1.3033833780160857
+  Min: 0
+  Max: 6.406
+  Standard Deviation: 0.7540491077183604
+  Variance: 0.5685900568508555
+  Total: 972.3239999999988
+
+
+For Station 4 with the ID: 0521, Here are the statistics for:
+Rainfall:
+  Average: 0.028983892617449665
+  Min: 0
+  Max: 2.288
+  Standard Deviation: 0.14044435915968073
+  Variance: 0.019724618019773398
+  Total: 21.593000000000007
+Soil moisture:
+  Average: 0.7291194630872483
+  Min: 0.651
+  Max: 0.763
+  Standard Deviation: 0.022082456904455715
+  Variance: 0.00048763490293714386
+  Total: 543.1940000000002
+Solar Energy:
+  Average: 126.74141977097047
+  Min: -6.932047
+  Max: 1177.828
+  Standard Deviation: 227.5924966113628
+  Variance: 51798.34451379319
+  Total: 94422.35772937302
+Air temperature:
+  Average: 14.178406711409396
+  Min: 7.683
+  Max: 22.8
+  Standard Deviation: 1.9997307674182536
+  Variance: 3.9989231421591973
+  Total: 10562.912999999995
+Wind speed:
+  Average: 1.8323275167785236
+  Min: 0
+  Max: 5.206
+  Standard Deviation: 0.8772740588373815
+  Variance: 0.7696097743090135
+  Total: 1365.0840000000003
+
+
+For Station 5 with the ID: 0502, Here are the statistics for:
+Rainfall:
+  Average: 0.015324396782841823
+  Min: 0
+  Max: 1.27
+  Standard Deviation: 0.08844557342054679
+  Variance: 0.007822619457689332
+  Total: 11.431999999999997
+Soil moisture:
+  Average: 0.49473458445040214
+  Min: 0.348
+  Max: 0.611
+  Standard Deviation: 0.053613649565758655
+  Variance: 0.002874423419759973
+  Total: 369.07200000000034
+Solar Energy:
+  Average: 213.96013418320376
+  Min: -14.00534
+  Max: 1217.927
+  Standard Deviation: 356.6146306307092
+  Variance: 127173.99477987715
+  Total: 159614.26010066998
+Air temperature:
+  Average: 22.221340482573726
+  Min: 14.89
+  Max: 28.06
+  Standard Deviation: 1.9930332552165881
+  Variance: 3.9721815563992298
+  Total: 16577.120000000024
+Wind speed:
+  Average: 1.904490616621984
+  Min: 0
+  Max: 5.321
+  Standard Deviation: 0.9815160376308678
+  Variance: 0.9633737321265992
+  Total: 1420.7499999999984
+
+
+For Station 6 with the ID: 0501, Here are the statistics for:
+Rainfall:
+  Average: 0.03530634278002699
+  Min: 0
+  Max: 3.81
+  Standard Deviation: 0.22500250887546858
+  Variance: 0.050626129000255315
+  Total: 26.16200000000001
+Soil moisture:
+  Average: 0.5266626180836708
+  Min: 0.303
+  Max: 0.673
+  Standard Deviation: 0.07975794169150872
+  Variance: 0.0063613292628661045
+  Total: 390.25700000000035
+Solar Energy:
+  Average: 151.38438308286774
+  Min: -10.99493
+  Max: 1182.899
+  Standard Deviation: 284.0998489799146
+  Variance: 80712.7241904103
+  Total: 112175.82786440509
+Air temperature:
+  Average: 18.68242375168691
+  Min: -79.3
+  Max: 27.27
+  Standard Deviation: 16.815829250511378
+  Variance: 282.772113382354
+  Total: 13843.676000000009
+Wind speed:
+  Average: 0.8115438596491228
+  Min: 0
+  Max: 3.261
+  Standard Deviation: 0.605779069334689
+  Variance: 0.3669682808440019
+  Total: 601.3540000000003
+
+
+For Station 7 with the ID: 0412, Here are the statistics for:
+Rainfall:
+  Average: 0.013077747989276139
+  Min: 0
+  Max: 1.539
+  Standard Deviation: 0.09952507013170249
+  Variance: 0.009905239584720298
+  Total: 9.755999999999997
+Soil moisture:
+  Average: 0.5505160857908847
+  Min: 0.425
+  Max: 0.659
+  Standard Deviation: 0.03922905215329986
+  Variance: 0.0015389185328463205
+  Total: 410.68499999999995
+Solar Energy:
+  Average: 154.00568473355764
+  Min: -4.726678
+  Max: 1204.404
+  Standard Deviation: 289.98960428422816
+  Variance: 84093.97059292324
+  Total: 114888.240811234
+Air temperature:
+  Average: 19.783203753351206
+  Min: 13.72
+  Max: 25.57
+  Standard Deviation: 1.7957951046145841
+  Variance: 3.2248800577577055
+  Total: 14758.269999999988
+Wind speed:
+  Average: 2.5670321715817694
+  Min: 0
+  Max: 7.796
+  Standard Deviation: 1.0076979581216419
+  Variance: 1.0154551748025262
+  Total: 1915.006
+
+
+For Station 8 with the ID: 0287, Here are the statistics for:
+Rainfall:
+  Average: 0.0020428954423592494
+  Min: 0
+  Max: 0.254
+  Standard Deviation: 0.022702707385064712
+  Variance: 0.0005154129226118718
+  Total: 1.524
+Soil moisture:
+  Average: 0.21156970509383377
+  Min: 0.14
+  Max: 0.389
+  Standard Deviation: 0.07367644552101371
+  Variance: 0.005428218624610901
+  Total: 157.8310000000001
+Solar Energy:
+  Average: 165.68038215323995
+  Min: -1.559
+  Max: 1394.262
+  Standard Deviation: 308.0318737395369
+  Variance: 94883.63523948999
+  Total: 123597.56508631693
+Air temperature:
+  Average: 19.1663165
+  Min: 9.421132
+  Max: 31.09933
+  Standard Deviation: 4.084865897134375
+  Variance: 16.686129397571424
+  Total: 14298.072108999993
+Wind speed:
+  Average: 0.683073726541555
+  Min: 0
+  Max: 2.957
+  Standard Deviation: 0.5148861722711411
+  Variance: 0.2651077703960271
+  Total: 509.5730000000002
+
+
+For Station 9 with the ID: 0286, Here are the statistics for:
+Rainfall:
+  Average: 0.003745308310991957
+  Min: 0
+  Max: 1.016
+  Standard Deviation: 0.04637801504993428
+  Variance: 0.002150920279971931
+  Total: 2.794
+Soil moisture:
+  Average: 0.10133378016085791
+  Min: 0.096
+  Max: 0.106
+  Standard Deviation: 0.001966118630634141
+  Variance: 3.86562246972667e-06
+  Total: 75.59499999999949
+Solar Energy:
+  Average: 150.0507303158311
+  Min: -6.696518
+  Max: 1306.404
+  Standard Deviation: 274.69898237598596
+  Variance: 75459.53091840223
+  Total: 111937.84481560995
+Air temperature:
+  Average: 22.063565147453083
+  Min: 16.15987
+  Max: 29.43606
+  Standard Deviation: 2.8165596959118786
+  Variance: 7.933008520635213
+  Total: 16459.4196
+Wind speed:
+  Average: 1.1460361930294907
+  Min: 0
+  Max: 6.072
+  Standard Deviation: 0.7789196148984445
+  Variance: 0.6067157664735412
+  Total: 854.9429999999995
+
+
+For Station 10 with the ID: 0283, Here are the statistics for:
+Rainfall:
+  Average: 0.029821862348178137
+  Min: 0
+  Max: 1.016
+  Standard Deviation: 0.1123518633448841
+  Variance: 0.012622941197067514
+  Total: 22.098000000000013
+Soil moisture:
+  Average: 0.031024291497975708
+  Min: 0
+  Max: 0.371
+  Standard Deviation: 0.09568964164022056
+  Variance: 0.009156507517233833
+  Total: 22.988999999999997
+Solar Energy:
+  Average: 181.9277746620486
+  Min: -8.192163
+  Max: 1212.599
+  Standard Deviation: 321.7212451411284
+  Variance: 103504.55957515803
+  Total: 134808.48102457813
+Air temperature:
+  Average: -34.37720107017544
+  Min: -40
+  Max: 21.66525
+  Standard Deviation: 16.813089333150057
+  Variance: 282.67997292448416
+  Total: -25473.505993000075
+Wind speed:
+  Average: 2.6206693657219975
+  Min: 0
+  Max: 7.1
+  Standard Deviation: 1.334585928291133
+  Variance: 1.7811195999927052
+  Total: 1941.9160000000004
+
+
+For Station 11 with the ID: 0282, Here are the statistics for:
+Rainfall:
+  Average: 0.04324128686327078
+  Min: 0
+  Max: 2.286
+  Standard Deviation: 0.17981699335289753
+  Variance: 0.03233415109847599
+  Total: 32.25800000000001
+Soil moisture:
+  Average: 0.6676997319034853
+  Min: 0.577
+  Max: 0.777
+  Standard Deviation: 0.03605790905331527
+  Variance: 0.001300172805297155
+  Total: 498.104
+Solar Energy:
+  Average: 165.08978415029492
+  Min: -2.227333
+  Max: 1182.569
+  Standard Deviation: 301.03855512354914
+  Variance: 90624.21167087414
+  Total: 123156.97897611994
+Air temperature:
+  Average: 19.07881981233244
+  Min: 13.20883
+  Max: 28.27165
+  Standard Deviation: 2.222307691654694
+  Variance: 4.938651476387616
+  Total: 14232.79958
+Wind speed:
+  Average: 2.8845951742627345
+  Min: 0
+  Max: 8.96
+  Standard Deviation: 1.6053057413291918
+  Variance: 2.5770065231444663
+  Total: 2151.9080000000017
+
+
+For Station 12 with the ID: 0281, Here are the statistics for:
+Rainfall:
+  Average: 0.018386058981233244
+  Min: 0
+  Max: 1.016
+  Standard Deviation: 0.09585067255657727
+  Variance: 0.009187351429548195
+  Total: 13.71599999999999
+Soil moisture:
+  Average: 0.33466353887399464
+  Min: 0.114
+  Max: 0.504
+  Standard Deviation: 0.07463484754094137
+  Variance: 0.0055703604674595605
+  Total: 249.6589999999999
+Solar Energy:
+  Average: 50.33454873501743
+  Min: -3.299033
+  Max: 1052.713
+  Standard Deviation: 161.25331539966496
+  Variance: 26002.631727383825
+  Total: 37549.57335632301
+Air temperature:
+  Average: 20.86050018766756
+  Min: 14.34292
+  Max: 29.01096
+  Standard Deviation: 2.8872937800609217
+  Variance: 8.336465372378488
+  Total: 15561.933139999986
+Wind speed:
+  Average: 1.0372801608579088
+  Min: 0
+  Max: 4.777
+  Standard Deviation: 0.7299851744806772
+  Variance: 0.5328783549615849
+  Total: 773.8110000000001
+
+
+For Station 13 with the ID: 0252, Here are the statistics for:
+Rainfall:
+  Average: 0.007490616621983914
+  Min: 0
+  Max: 0.508
+  Standard Deviation: 0.04685488713834218
+  Variance: 0.002195380448746784
+  Total: 5.587999999999999
+Soil moisture:
+  Average: 0.2210951742627346
+  Min: 0.171
+  Max: 0.434
+  Standard Deviation: 0.04438471595310765
+  Variance: 0.0019700030102380484
+  Total: 164.93699999999993
+Solar Energy:
+  Average: 225.39478971461125
+  Min: -7.097945
+  Max: 1255.177
+  Standard Deviation: 377.76554533722606
+  Variance: 142706.8072439318
+  Total: 168144.5131271001
+Air temperature:
+  Average: 17.50066890080429
+  Min: 6.961
+  Max: 25.7
+  Standard Deviation: 2.9970644409789617
+  Variance: 8.982395263380536
+  Total: 13055.498999999994
+Wind speed:
+  Average: 1.639719839142091
+  Min: 0
+  Max: 4.547
+  Standard Deviation: 0.927697819094229
+  Variance: 0.8606232435521889
+  Total: 1223.2310000000002
+
+
+For Station 14 with the ID: 0251, Here are the statistics for:
+Rainfall:
+  Average: 0.04441823056300268
+  Min: 0
+  Max: 5.17
+  Standard Deviation: 0.240867129018671
+  Variance: 0.0580169738416971
+  Total: 33.136000000000024
+Soil moisture:
+  Average: 0.7213806970509383
+  Min: 0.631
+  Max: 0.735
+  Standard Deviation: 0.01871588644492982
+  Variance: 0.00035028440541950783
+  Total: 538.1500000000009
+Solar Energy:
+  Average: 136.09709875125202
+  Min: -7.127695
+  Max: 1190.113
+  Standard Deviation: 254.4708199680334
+  Variance: 64755.39821520327
+  Total: 101528.435668434
+Air temperature:
+  Average: 14.603447721179625
+  Min: 6.782
+  Max: 22.87
+  Standard Deviation: 2.160345720673829
+  Variance: 4.667093632833726
+  Total: 10894.171999999997
+Wind speed:
+  Average: 1.7970361930294907
+  Min: 0
+  Max: 6.658
+  Standard Deviation: 1.0224425827057073
+  Variance: 1.045388834929917
+  Total: 1340.589
+
+
+For Station 15 with the ID: 0243, Here are the statistics for:
+Rainfall:
+  Average: 0.004766756032171582
+  Min: 0
+  Max: 0.762
+  Standard Deviation: 0.04134272235851049
+  Variance: 0.001709220692012883
+  Total: 3.556
+Solar Energy:
+  Average: 138.88217745794907
+  Min: -6.78781
+  Max: 1244.549
+  Standard Deviation: 263.2995601995071
+  Variance: 69326.65840125387
+  Total: 103606.10438362995
+Air temperature:
+  Average: 14.580483914209115
+  Min: 6.961
+  Max: 22.62
+  Standard Deviation: 2.6985284049069955
+  Variance: 7.2820555520898935
+  Total: 10877.040999999987
+Wind speed:
+  Average: 1.5382882037533512
+  Min: 0
+  Max: 7.369
+  Standard Deviation: 0.8978360166535196
+  Variance: 0.8061095128002591
+  Total: 1147.5629999999992
+
+
+For Station 16 with the ID: 0242, Here are the statistics for:
+Rainfall:
+  Average: 0.009879356568364611
+  Min: 0
+  Max: 1.782
+  Standard Deviation: 0.0921664174896368
+  Variance: 0.00849464851287403
+  Total: 7.369999999999999
+Soil moisture:
+  Average: 0.34737533512064345
+  Min: 0
+  Max: 0.558
+  Standard Deviation: 0.16386787485947749
+  Variance: 0.02685268041096137
+  Total: 259.1419999999998
+Solar Energy:
+  Average: 145.56254811130026
+  Min: -8.893775
+  Max: 1311.263
+  Standard Deviation: 300.60178742001017
+  Variance: 90361.43460010499
+  Total: 108589.66089103001
+Air temperature:
+  Average: 15.991635388739946
+  Min: 10.03
+  Max: 24.35
+  Standard Deviation: 2.2724272582552323
+  Variance: 5.1639256440613925
+  Total: 11929.759999999991
+Wind speed:
+  Average: 2.66622654155496
+  Min: 0
+  Max: 17.61
+  Standard Deviation: 1.7183355043928459
+  Variance: 2.9526769056570163
+  Total: 1989.004999999999
+
+
+For Station 17 with the ID: 0241, Here are the statistics for:
+Rainfall:
+  Average: 0.022861930294906168
+  Min: 0
+  Max: 2.068
+  Standard Deviation: 0.14334964425656496
+  Variance: 0.020549120508483724
+  Total: 17.055
+Soil moisture:
+  Average: 0.2026219839142091
+  Min: 0.143
+  Max: 0.292
+  Standard Deviation: 0.029106870875554174
+  Variance: 0.0008472099321661839
+  Total: 151.15599999999998
+Solar Energy:
+  Average: 122.84489064564075
+  Min: -5.957621
+  Max: 1268.683
+  Standard Deviation: 239.39456322085752
+  Variance: 57309.75689970514
+  Total: 91642.28842164796
+Air temperature:
+  Average: 18.61313672922252
+  Min: 11.44
+  Max: 25.04
+  Standard Deviation: 2.8473850148672843
+  Variance: 8.107601422890765
+  Total: 13885.399999999996
+Wind speed:
+  Average: 0.8321742627345845
+  Min: 0
+  Max: 2.387
+  Standard Deviation: 0.5477175181230299
+  Variance: 0.2999944796588517
+  Total: 620.8020000000004
+
+
+For Station 18 with the ID: 0231, Here are the statistics for:
+Rainfall:
+  Average: 0.02460053619302949
+  Min: 0
+  Max: 4.382
+  Standard Deviation: 0.18321699080006992
+  Variance: 0.03356846571783291
+  Total: 18.351999999999997
+Soil moisture:
+  Average: 0.5290495978552279
+  Min: 0.482
+  Max: 0.572
+  Standard Deviation: 0.01924700499247467
+  Variance: 0.00037044720118034494
+  Total: 394.6709999999999
+Solar Energy:
+  Average: 2443.7929413969705
+  Min: -5.340145
+  Max: 13383.72
+  Standard Deviation: 4549.787478734763
+  Variance: 20700566.101651628
+  Total: 1823069.5342821379
+Air temperature:
+  Average: 18.022627345844505
+  Min: 12.37
+  Max: 28.16
+  Standard Deviation: 2.19502868777087
+  Variance: 4.818150940137107
+  Total: 13444.879999999994
+Wind speed:
+  Average: 2.3193927613941017
+  Min: 0
+  Max: 7.96
+  Standard Deviation: 1.1581641002532057
+  Variance: 1.3413440831153174
+  Total: 1730.2670000000012
+
+
+For Station 19 with the ID: 0213, Here are the statistics for:
+Rainfall:
+  Average: 0.04336595174262735
+  Min: 0
+  Max: 1.796
+  Standard Deviation: 0.16465950670363652
+  Variance: 0.027112753147884916
+  Total: 32.35100000000005
+Soil moisture:
+  Average: 0.43499731903485256
+  Min: 0.201
+  Max: 0.546
+  Standard Deviation: 0.06352307612873033
+  Variance: 0.004035181200856469
+  Total: 324.50800000000015
+Solar Energy:
+  Average: 141.29052202727883
+  Min: -6.312637
+  Max: 1341.325
+  Standard Deviation: 273.48933989517195
+  Variance: 74796.41903629688
+  Total: 105402.72943235005
+Air temperature:
+  Average: 17.545335120643433
+  Min: 11.33
+  Max: 26.29
+  Standard Deviation: 2.6664709518777507
+  Variance: 7.110067337207838
+  Total: 13088.820000000003
+Wind speed:
+  Average: 0.8905013404825737
+  Min: 0
+  Max: 3.211
+  Standard Deviation: 0.605324358664701
+  Variance: 0.3664175791928316
+  Total: 664.314
+
+
+For Station 20 with the ID: 0212, Here are the statistics for:
+Rainfall:
+  Average: 0.030359249329758715
+  Min: 0
+  Max: 1.787
+  Standard Deviation: 0.13375449673770426
+  Variance: 0.017890265397556542
+  Total: 22.648000000000003
+Soil moisture:
+  Average: 0.5288847184986596
+  Min: 0.425
+  Max: 0.583
+  Standard Deviation: 0.024594103232548816
+  Variance: 0.0006048699138132681
+  Total: 394.5479999999993
+Solar Energy:
+  Average: 185.5141017850268
+  Min: -5.798681
+  Max: 1367.156
+  Standard Deviation: 332.22214883451073
+  Variance: 110371.5561762198
+  Total: 138393.51993163006
+Air temperature:
+  Average: 20.13837801608579
+  Min: 13.81
+  Max: 27.32
+  Standard Deviation: 2.2161751733998627
+  Variance: 4.911432399193911
+  Total: 15023.230000000001
+Wind speed:
+  Average: 1.8191916890080428
+  Min: 0
+  Max: 6.905
+  Standard Deviation: 0.9485175997478938
+  Variance: 0.8996856370315058
+  Total: 1357.1169999999995
+
+
+For Station 21 with the ID: 0211, Here are the statistics for:
+Rainfall:
+  Average: 0.006683646112600536
+  Min: 0
+  Max: 0.5
+  Standard Deviation: 0.0442565634685266
+  Variance: 0.0019586434100437233
+  Total: 4.986
+Soil moisture:
+  Average: 0.46942359249329757
+  Min: 0.239
+  Max: 0.521
+  Standard Deviation: 0.06024268754279379
+  Variance: 0.003629181402378682
+  Total: 350.18999999999943
+Solar Energy:
+  Average: 237.72309310481234
+  Min: -12.17685
+  Max: 1187.078
+  Standard Deviation: 403.21932454539245
+  Variance: 162585.82368684252
+  Total: 177341.42745619023
+Air temperature:
+  Average: 10.257091152815013
+  Min: 0.718
+  Max: 21.83
+  Standard Deviation: 3.8497104390022936
+  Variance: 14.820270464163233
+  Total: 7651.789999999997
+Wind speed:
+  Average: 2.5812506702412867
+  Min: 0
+  Max: 8.67
+  Standard Deviation: 1.3508604357763458
+  Variance: 1.8248239169458589
+  Total: 1925.6129999999994
+
+
+For Station 22 with the ID: 0202, Here are the statistics for:
+Rainfall:
+  Average: 0.027873994638069704
+  Min: 0
+  Max: 1.796
+  Standard Deviation: 0.15567227732271485
+  Variance: 0.02423385792684024
+  Total: 20.794000000000008
+Soil moisture:
+  Average: 0.3515227882037534
+  Min: 0
+  Max: 0.533
+  Standard Deviation: 0.1810308369022552
+  Variance: 0.03277216390953092
+  Total: 262.2359999999999
+Solar Energy:
+  Average: 141.29127644775068
+  Min: -7.457225
+  Max: 1286.117
+  Standard Deviation: 296.1210577276182
+  Variance: 87687.68082972341
+  Total: 105403.29223002205
+Air temperature:
+  Average: 20.666139410187668
+  Min: 14.53
+  Max: 28.69
+  Standard Deviation: 2.5393554330652575
+  Variance: 6.448326015438041
+  Total: 15416.939999999997
+Wind speed:
+  Average: 1.5372479892761395
+  Min: 0
+  Max: 5.971
+  Standard Deviation: 1.0787333954313134
+  Variance: 1.1636657384187703
+  Total: 1146.7869999999994
+
+
+For Station 23 with the ID: 0201, Here are the statistics for:
+Rainfall:
+  Average: 0.02720241286863271
+  Min: 0
+  Max: 1.796
+  Standard Deviation: 0.10913932008584772
+  Variance: 0.011911391188801123
+  Total: 20.293000000000006
+Soil moisture:
+  Average: 0.44617560321715816
+  Min: 0.325
+  Max: 0.517
+  Standard Deviation: 0.0400338446746537
+  Variance: 0.0016027087194342982
+  Total: 332.8470000000003
+Solar Energy:
+  Average: 186.21770556457105
+  Min: -8.564101
+  Max: 1296.985
+  Standard Deviation: 328.7556830728462
+  Variance: 108080.29915269367
+  Total: 138918.40835116993
+Air temperature:
+  Average: 14.241554959785523
+  Min: 9.16
+  Max: 22.15
+  Standard Deviation: 2.1730664926640246
+  Variance: 4.722217981539126
+  Total: 10624.200000000015
+Wind speed:
+  Average: 4.203914209115282
+  Min: 0.084
+  Max: 10.07
+  Standard Deviation: 1.732838770546926
+  Variance: 3.0027302047105815
+  Total: 3136.119999999998
+
+
+For Station 24 with the ID: 0154, Here are the statistics for:
+Rainfall:
+  Average: 0.030583109919571045
+  Min: 0
+  Max: 3.13
+  Standard Deviation: 0.17438170485893884
+  Variance: 0.03040897898951005
+  Total: 22.81500000000002
+Soil moisture:
+  Average: 0.5051072386058981
+  Min: 0.345
+  Max: 0.674
+  Standard Deviation: 0.044144324327721286
+  Variance: 0.0019487213703510455
+  Total: 376.81000000000023
+Solar Energy:
+  Average: 194.29259685840884
+  Min: -9.931717
+  Max: 1283.029
+  Standard Deviation: 336.80595448710176
+  Variance: 113438.25097796765
+  Total: 144942.27725637303
+Air temperature:
+  Average: 10.996174262734584
+  Min: 2.638
+  Max: 24.25
+  Standard Deviation: 3.524564089063197
+  Variance: 12.422552017913885
+  Total: 8203.145999999992
+Wind speed:
+  Average: 2.014847184986595
+  Min: 0
+  Max: 6.209
+  Standard Deviation: 0.9555579139705749
+  Variance: 0.9130909269517966
+  Total: 1503.0760000000005
+
+
+For Station 25 with the ID: 0153, Here are the statistics for:
+Rainfall:
+  Average: 0.011235924932975871
+  Min: 0
+  Max: 1.27
+  Standard Deviation: 0.09190675517753935
+  Variance: 0.008446851647264155
+  Total: 8.381999999999998
+Soil moisture:
+  Average: 0.04863941018766756
+  Min: 0.033
+  Max: 0.146
+  Standard Deviation: 0.01482497445431585
+  Variance: 0.00021977986757111754
+  Total: 36.28499999999996
+Solar Energy:
+  Average: 279.665637318311
+  Min: -13.78376
+  Max: 1359.929
+  Standard Deviation: 432.920971030956
+  Variance: 187420.56715838588
+  Total: 208630.56543946
+Air temperature:
+  Average: 8.577282841823056
+  Min: -2.534
+  Max: 18.23
+  Standard Deviation: 3.4527384356663946
+  Variance: 11.92140270512802
+  Total: 6398.652999999999
+Wind speed:
+  Average: 4.49467292225201
+  Min: 0.051
+  Max: 12.9
+  Standard Deviation: 2.4284402479457863
+  Variance: 5.897322037842993
+  Total: 3353.0260000000017
+
+
+For Station 26 with the ID: 0151, Here are the statistics for:
+Rainfall:
+  Average: 0.009873994638069705
+  Min: 0
+  Max: 1.524
+  Standard Deviation: 0.08105843575703366
+  Variance: 0.006570470007377153
+  Total: 7.365999999999996
+Soil moisture:
+  Average: 0.28940080428954423
+  Min: 0.13
+  Max: 0.614
+  Standard Deviation: 0.07011598406090269
+  Variance: 0.00491625122082876
+  Total: 215.89300000000014
+Solar Energy:
+  Average: 241.14910207928955
+  Min: -8.842205
+  Max: 1295.338
+  Standard Deviation: 396.0474404497039
+  Variance: 156853.57508676176
+  Total: 179897.23015115008
+Air temperature:
+  Average: 12.15774128686327
+  Min: 2.312
+  Max: 22.47
+  Standard Deviation: 3.880066457098533
+  Variance: 15.054915711501161
+  Total: 9069.674999999997
+Wind speed:
+  Average: 2.3869544235924933
+  Min: 0
+  Max: 8.76
+  Standard Deviation: 1.404706131559483
+  Variance: 1.9731993160408081
+  Total: 1780.667999999999
+
+
+For Station 27 with the ID: 0144, Here are the statistics for:
+Rainfall:
+  Average: 0.014192733017377567
+  Min: 0
+  Max: 1.539
+  Standard Deviation: 0.10158854159082334
+  Variance: 0.010320231782550444
+  Total: 8.983999999999998
+Soil moisture:
+  Average: 0.12344549763033176
+  Min: 0.052
+  Max: 0.402
+  Standard Deviation: 0.06129866149740798
+  Variance: 0.003757525901373808
+  Total: 78.14100000000002
+Solar Energy:
+  Average: 191.91949411339021
+  Min: -5.51695
+  Max: 1435.449
+  Standard Deviation: 346.6891058605279
+  Variance: 120193.33612237232
+  Total: 121485.03977377583
+Air temperature:
+  Average: 17.441105845181674
+  Min: 10.8
+  Max: 23.65
+  Standard Deviation: 2.1437215606514424
+  Variance: 4.5955421296018555
+  Total: 11040.219999999998
+Wind speed:
+  Average: 3.3261879936808847
+  Min: 0
+  Max: 8.74
+  Standard Deviation: 1.7431878265015548
+  Variance: 3.038703798463215
+  Total: 2105.4770000000003
+
+
+For Station 28 with the ID: 0131, Here are the statistics for:
+Rainfall:
+  Average: 0.004024128686327078
+  Min: 0
+  Max: 0.752
+  Standard Deviation: 0.04284248605830316
+  Variance: 0.0018354786116559008
+  Total: 3.002
+Soil moisture:
+  Average: 0.2740656836461126
+  Min: 0.161
+  Max: 0.596
+  Standard Deviation: 0.1068768329659614
+  Variance: 0.011422657424834014
+  Total: 204.4529999999998
+Solar Energy:
+  Average: 211.0268415369437
+  Min: -11.13784
+  Max: 1299.369
+  Standard Deviation: 350.8177395064488
+  Variance: 123073.08635241457
+  Total: 157426.02378656002
+Air temperature:
+  Average: 22.605455764075067
+  Min: 16.31
+  Max: 28.86
+  Standard Deviation: 2.33326815042741
+  Variance: 5.444140261798946
+  Total: 16863.670000000006
+Wind speed:
+  Average: 2.1243632707774798
+  Min: 0
+  Max: 9.03
+  Standard Deviation: 1.246642700303348
+  Variance: 1.5541180222196231
+  Total: 1584.7749999999983
+
+
+For Station 29 with the ID: 0121, Here are the statistics for:
+Rainfall:
+  Average: 0.004471849865951743
+  Min: 0
+  Max: 1.026
+  Standard Deviation: 0.06147441120785075
+  Variance: 0.003779103233351926
+  Total: 3.3360000000000003
+Soil moisture:
+  Average: 0.20934450402144772
+  Min: 0.093
+  Max: 0.519
+  Standard Deviation: 0.11003749490600881
+  Variance: 0.012108250285189916
+  Total: 156.17100000000025
+Solar Energy:
+  Average: 242.80518506841824
+  Min: -5.187111
+  Max: 1333.675
+  Standard Deviation: 393.74879770763437
+  Variance: 155038.11569620756
+  Total: 181132.66806104
+Air temperature:
+  Average: 22.928364611260054
+  Min: 14.46
+  Max: 30.91
+  Standard Deviation: 3.50552714201306
+  Variance: 12.288720543390252
+  Total: 17104.560000000016
+Wind speed:
+  Average: 2.211142091152815
+  Min: 0
+  Max: 8.17
+  Standard Deviation: 1.3439576160514644
+  Variance: 1.8062220737427352
+  Total: 1649.5119999999988
+
+
+For Station 30 with the ID: 0119, Here are the statistics for:
+Rainfall:
+  Average: 0.008512064343163539
+  Min: 0
+  Max: 1.778
+  Standard Deviation: 0.07905156240508968
+  Variance: 0.006249149518685788
+  Total: 6.349999999999996
+Soil moisture:
+  Average: 0.24868364611260055
+  Min: 0.169
+  Max: 0.443
+  Standard Deviation: 0.05124128134033562
+  Variance: 0.0026256689133994275
+  Total: 185.51799999999974
+Solar Energy:
+  Average: 177.41239505593833
+  Min: -7.154813
+  Max: 1376.096
+  Standard Deviation: 309.58346603108
+  Variance: 95841.92243981684
+  Total: 132349.6467117299
+Air temperature:
+  Average: 16.881541554959785
+  Min: 9.4
+  Max: 26.79
+  Standard Deviation: 3.0483524711233367
+  Variance: 9.292452788203754
+  Total: 12593.63
+Wind speed:
+  Average: 1.0969530831099197
+  Min: 0
+  Max: 5.063
+  Standard Deviation: 0.7767944191405673
+  Variance: 0.6034095696079314
+  Total: 818.3269999999999
+
+
+For Station 31 with the ID: 0118, Here are the statistics for:
+Rainfall:
+  Average: 0.008766756032171582
+  Min: 0
+  Max: 1.264
+  Standard Deviation: 0.0733057348310961
+  Variance: 0.005373730759126977
+  Total: 6.540000000000003
+Soil moisture:
+  Average: 0.2546219839142091
+  Min: 0.13
+  Max: 0.493
+  Standard Deviation: 0.08130668925372059
+  Variance: 0.006610777717401083
+  Total: 189.94799999999987
+Solar Energy:
+  Average: 214.56948763633645
+  Min: -6.040082
+  Max: 1309.517
+  Standard Deviation: 357.5362803307579
+  Variance: 127832.19175275431
+  Total: 160068.8377767071
+Air temperature:
+  Average: 20.45256032171582
+  Min: 11.31
+  Max: 29.42
+  Standard Deviation: 3.8312168164976157
+  Variance: 14.678222295014125
+  Total: 15257.61
+Wind speed:
+  Average: 2.0742372654155496
+  Min: 0
+  Max: 10.21
+  Standard Deviation: 1.1788387477912272
+  Variance: 1.3896607932939886
+  Total: 1547.3810000000017
+
+
+For Station 32 with the ID: 0116, Here are the statistics for:
+Rainfall:
+  Average: 0.01578686327077748
+  Min: 0
+  Max: 5.173
+  Standard Deviation: 0.20343382121080458
+  Variance: 0.041385319612429604
+  Total: 11.776999999999996
+Soil moisture:
+  Average: 0.29202815013404826
+  Min: 0.202
+  Max: 0.492
+  Standard Deviation: 0.04790312383989569
+  Variance: 0.0022947092736203827
+  Total: 217.8530000000002
+Solar Energy:
+  Average: 169.66270914725737
+  Min: -6.961597
+  Max: 1302.85
+  Standard Deviation: 296.726577574333
+  Variance: 88046.66183897667
+  Total: 126568.38102385399
+Air temperature:
+  Average: 16.625806970509384
+  Min: 7.522
+  Max: 26.25
+  Standard Deviation: 3.6279992356620983
+  Variance: 13.16237845396477
+  Total: 12402.851999999995
+Wind speed:
+  Average: 1.2072412868632707
+  Min: 0
+  Max: 5.658
+  Standard Deviation: 0.6413517672490734
+  Variance: 0.41133208935350957
+  Total: 900.6019999999995
+
+
+For Station 33 with the ID: 0115, Here are the statistics for:
+Rainfall:
+  Average: 0.0201514745308311
+  Min: 0
+  Max: 2.282
+  Standard Deviation: 0.12837369884392139
+  Variance: 0.01647980655486982
+  Total: 15.033000000000005
+Soil moisture:
+  Average: 0.40794101876675604
+  Min: 0.242
+  Max: 0.55
+  Standard Deviation: 0.07271933178001012
+  Variance: 0.0052881012145311905
+  Total: 304.3239999999999
+Solar Energy:
+  Average: 209.9575456831681
+  Min: -9.073643
+  Max: 1286.017
+  Standard Deviation: 357.7508610979023
+  Variance: 127985.6786162906
+  Total: 156628.3290796435
+Air temperature:
+  Average: 18.26383378016086
+  Min: 9.78
+  Max: 26.44
+  Standard Deviation: 2.76574381305427
+  Variance: 7.6493388394479735
+  Total: 13624.820000000003
+Wind speed:
+  Average: 2.420994638069705
+  Min: 0.036
+  Max: 7.742
+  Standard Deviation: 1.1496457744377702
+  Variance: 1.3216854066826205
+  Total: 1806.062

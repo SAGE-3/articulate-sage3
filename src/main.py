@@ -21,8 +21,7 @@ import requests
 import command_models
 from collections import deque
 
-filename = "./logs/test.json"
-filename2 = "./logs/test2.json"
+filename = "./logs/test3.json"
 
 # Check if the file exists, if not create it with an empty array
 if not os.path.exists(filename):
@@ -43,29 +42,12 @@ def write_to_file(data):
         
     return
 
-# Check if the file exists, if not create it with an empty array
-if not os.path.exists(filename2):
-    with open(filename2, 'w') as file:
-        json.dump([], file)
-
-def write_to_file2(data):
-    # Read the existing content
-    with open(filename2, 'r') as file:
-        array = json.load(file)
-    
-    # Add new data to the array
-    array.append(data)
-    
-    # Write the updated array back to the file
-    with open(filename2, 'w') as file:
-        json.dump(array, file, indent=4)
-        
-    return
 
 class TextRequest(BaseModel):
     prompt: str
     context: str
     chartContext: str
+    utteranceType: str
     
 class NL2CodeBody(BaseModel):
     text_prompt: str
@@ -139,6 +121,8 @@ async def createChartOptions(request: TextRequest):
   # required_fields(["prompt"], data)
   start =time.time()
   chart_context = request.chartContext
+  file = open("./data/data.txt", "r")
+  data_statistics = file.read()
 
   client_groq = Groq(api_key = os.getenv('GROQ_API_KEY'))
 
@@ -147,23 +131,35 @@ async def createChartOptions(request: TextRequest):
   llm_re = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 1, "dataset": dataset})
   llm_base = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 0,"dataset": dataset})
   llm_transform = csv_llm.LLM(client, {"model": "gpt-4o-2024-05-13", "temperature": 0,"dataset": dataset} )
+  llm_station = csv_llm.LLM(client, {"model": "gpt-4o-2024-05-13", "temperature": 0,"dataset": dataset} )
   llm = csv_llm.LLM(client_groq, {"model": "llama3-70b-8192", "temperature": 0, "dataset": dataset})
   conversational_context = request.context
   user_prompt = request.prompt #"""show me car brands vs price, sort by decending prices"""
-  user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
-                                                 Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
-  print(f'For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context}')
+  
+  utteranceType = request.utteranceType
+  if(utteranceType == "0"):
+    print("Helloo there")
+    user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
+                                                  Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
+  elif(utteranceType == "2"):
+    print("Helloo there2")
+    user_prompt_modified, user_prompt_reasoning = llm_re.prompt_proactive_reiterate(f"Here the user just selected the chart: {user_prompt}", f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
+                                                  Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
+  else: 
+    print("Helloo there3")
+    user_prompt_modified, user_prompt_reasoning = llm_re.prompt_proactive_reiterate(f"Here is the user's most recent utterance: {user_prompt}", f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
+      Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
   print("****Selecting Stations****")
-
-  stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
+  print(user_prompt_modified)
+  stations, station_reasoning = llm_station.prompt_select_stations(user_prompt_modified,data_statistics )
   # print(stations)
   # print(station_reasoning)
   print()
   
   if len(stations) == 0:
     print("Error in getting stations, trying one more time")
-    print(stations)
-    stations, station_reasoning = llm_base.prompt_select_stations(user_prompt_modified)
+    print(stations, station_reasoning, user_prompt_modified)
+    stations, station_reasoning = llm_station.prompt_select_stations(user_prompt_modified, data_statistics)
     if(len(stations) == 0):
       return {}
     else:
@@ -299,9 +295,9 @@ async def transcribe(file: UploadFile = File(...)):
     #     return {"transcription": ""}
 
     result = whisper_model.transcribe(wav_file_path)
+    write_to_file(json.dumps({'userPrompt': result['text'], 'date': datetime.now()}, default=str))
     os.remove(temp_file_path)
     os.remove(wav_file_path)
-    write_to_file2(json.dumps({'utterace': result['text'], 'time': datetime.now()}, default=str))
     return {"transcription": result["text"]}
 
 def read_wave(path):

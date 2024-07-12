@@ -1,2 +1,2 @@
-LWnet_1_Avg,Psl_1,P_1,RH_1_Avg,SWnet_1_Avg,SWin_1_Avg,Tair_1_Avg,Tair_2_Avg,LWin_1_Avg,Tsrf_1_Avg,Tsky_1_Avg,Rnet_1_Avg,SM_1_Avg,Rin_1_Avg,SWout_1_Avg,LWout_1_Avg,RF_1_Tot
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SWin_1_Avg,Tair_1_Avg,RF_1_Tot,SM_1_Avg,WS_1_Avg
+0,0,0,0,0
