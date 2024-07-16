@@ -138,15 +138,12 @@ async def createChartOptions(request: TextRequest):
   
   utteranceType = request.utteranceType
   if(utteranceType == "0"):
-    print("Helloo there")
     user_prompt_modified, user_prompt_reasoning = llm_re.prompt_reiterate(user_prompt, f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
                                                   Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
   elif(utteranceType == "2"):
-    print("Helloo there2")
     user_prompt_modified, user_prompt_reasoning = llm_re.prompt_proactive_reiterate(f"Here the user just selected the chart: {user_prompt}", f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
                                                   Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
   else: 
-    print("Helloo there3")
     user_prompt_modified, user_prompt_reasoning = llm_re.prompt_proactive_reiterate(f"Here is the user's most recent utterance: {user_prompt}", f"""For extra context, here is the current verbal context of the last few utterances: {" ".join(last_utterances)}. 
       Here is is the current chart context of what charts were last created, selected, and iteracted by the user: {chart_context} """)
   print("****Selecting Stations****")
@@ -254,6 +251,7 @@ async def createChartOptions(request: TextRequest):
     "stationChosen": stations, 
     "stationReasoning": station_reasoning,
     "dates": dates,
+    "utteranceType": utteranceType,
     "datesReasoning": dates_reasoning,
     "attributes": chosen_attributes_names,
     "attributeReasoning": attrib_reasoning,
