@@ -245,7 +245,7 @@ async def createChartOptions(request: TextRequest):
     "chartContext": chart_context,
     "chartType": chartType,
     "chartReasoning": chart_reasoning,
-    "conversationalContext": conversational_context,
+    "conversationalContext": last_utterances,
     "userPromptModified": user_prompt_modified,
     "userPromptReasoning": user_prompt_reasoning,
     "stationChosen": stations, 
